@@ -17,11 +17,11 @@
               <ul class="header1__nav-left-list d-flex align-items-center">
                 {%- if section.settings.menu != blank -%}
                   {%- for link in section.settings.menu.links -%}
-                    {% if settings.mega_title == link.title %}
+                    {%- if settings.mega_title == link.title -%}
                       <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU LEFT SIDE -->
                       <li class="header1__nav-left-list-item header1__has-dropdown site-nav--is-megamenu">
                         <a href="" class="header1__nav-left-link header1__nav--link-has-dropdown">
-                          {{ link.title }}
+                          {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Megamenu START -->
                         <div class="nav-dropdown text-left megamenu">
@@ -29,14 +29,15 @@
                             <div class="container">
                               <div class="row">
                                 {% for childlink in link.links %}
+                                  <a href="#" class="megamenu__collection-img"></a>
                                   <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <h5 className="megamenu__collection-heading py-3">
+                                    <h5 class="megamenu__collection-heading py-3">
                                       <a href="#">{{ childlink.title }}</a>
                                     </h5>
                                     <ul class="megamenu__list text-left nav-dropdown__list">
                                       {% for grandchildlink in childlink.links %}
-                                        <li className="nav-dropdown__list-item">
-                                          <a href="{{ grandchildlink.url }}" className="nav-dropdown__link">
+                                        <li class="nav-dropdown__list-item">
+                                          <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
                                             {{ grandchildlink.title }}
                                           </a>
                                         </li>
@@ -51,27 +52,27 @@
                         <!-- Megamenu END -->
                       </li>
 
-                    {% elsif link.links != blank %}
+                    {%- elsif link.links != blank -%}
                       <!-- REGULAR LINK WITH A DROPDOWN MENU LEFT SIDE -->
                       <li class="header1__nav-left-list-item header1__has-dropdown">
                         <a href="" class="header1__nav-left-link header1__nav--link-has-dropdown">
-                          {{ link.title }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+                          {{ link.title | escape }} <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Dropdown Menu START -->
                         <ul class="nav-dropdown text-left nav-dropdown__list">
                           {% for childlink in link.links %}
                             <li class="nav-dropdown__list-item">
-                              <a href="{{ childlink.url }}" class="nav-dropdown__link">{{ childlink.title }}</a>
+                              <a href="{{ childlink.url }}" class="nav-dropdown__link">{{ childlink.title | escape }}</a>
                             </li>
                           {% endfor %}
                         </ul>
                         <!-- Dropdown Menu END -->
                       </li>
-                    {% else %}
+                    {%- else -%}
                       <!-- REGULAR LINK -->
-                      <li className="header1__nav-left-list-item">
-                        <a href="{{ link.url }}" className="header1__nav-left-link">
-                          {{ link.title }}
+                      <li class="header1__nav-left-list-item">
+                        <a href="{{ link.url }}" class="header1__nav-left-link">
+                          {{ link.title | escape }}
                         </a>
                       </li>
 
@@ -93,7 +94,9 @@
                     width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
                     alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
                 {%- else -%}
+                <h1 class="header1__nav-logo">
                   {{ shop.name }}
+                </h1>
                 {%- endif -%}
               </a>
             </div>
@@ -103,7 +106,7 @@
             <nav class="header1__nav-right">
               <ul class="header1__nav-right-list d-flex align-items-center">
                 {%- if section.settings.menu_2 != blank -%}
-                  {%- for link in section.settings.menu.links -%}
+                  {%- for link in section.settings.menu_2.links -%}
                     {% if settings.mega_title == link.title %}
                       <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU RIGHT SIDE -->
                       <li class="header1__nav-right-list-item header1__has-dropdown site-nav--is-megamenu">
@@ -117,13 +120,13 @@
                               <div class="row">
                                 {% for childlink in link.links %}
                                 <div class="col-sm-3 col-md-3 col-lg-3">
-                                  <h5 className="megamenu__collection-heading py-3">
+                                  <h5 class="megamenu__collection-heading py-3">
                                     <a href="#">{{ childlink.title }}</a>
                                   </h5>
                                   <ul class="megamenu__list text-left nav-dropdown__list">
                                     {% for grandchildlink in childlink.links %}
-                                    <li className="nav-dropdown__list-item">
-                                      <a href="{{ grandchildlink.url }}" className="nav-dropdown__link">
+                                    <li class="nav-dropdown__list-item">
+                                      <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
                                         {{ grandchildlink.title }}
                                       </a>
                                     </li>
@@ -141,7 +144,7 @@
                       <!-- REGULAR LINK WITH A DROPDOWN MENU RIGHT SIDE -->
                       <li class="header1__nav-right-list-item header1__has-dropdown">
                         <a href="" class="header1__nav-right-link header1__nav--link-has-dropdown">
-                          {{ link.title }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+                          {{ link.title }} <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Dropdown Menu START -->
                         <ul class="nav-dropdown text-left nav-dropdown__list">
@@ -155,8 +158,8 @@
                       </li>
                     {% else %}
                       <!-- REGULAR LINK -->
-                      <li className="header1__nav-right-list-item">
-                        <a href="{{ link.url }}" className="header1__nav-right-link">
+                      <li class="header1__nav-right-list-item">
+                        <a href="{{ link.url }}" class="header1__nav-right-link">
                           {{ link.title }}
                         </a>
                       </li>
@@ -168,18 +171,18 @@
                 <li class="header1__nav-right-list-item">
                   {%- if shop.customer_accounts_enabled -%}
                   <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                    class="menu-drawer__account link link--text focus-inset h5">
+                    class="menu-drawer__account link link--text focus-inset">
                     {% render 'icon-account' %}
                     {%- liquid
                     if customer
-                    echo 'customer.account_fallback' | t
+                      echo 'customer.account_fallback' | t
                     else
-                    echo 'customer.log_in' | t
+                      echo 'customer.log_in' | t
                     endif
                     -%}
                   </a>
                   {%- endif -%}
-                  </a>
+                  
                 </li>
 
                 <li class="header1__nav-right-list-item">  

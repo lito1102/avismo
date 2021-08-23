@@ -6332,7 +6332,7 @@ form {
 		scroll-behavior: smooth;
 	}
 }
-body {
+/* body {
 	margin: 0;
 	font-family: var(--bs-font-sans-serif);
 	font-size: 1rem;
@@ -6342,7 +6342,7 @@ body {
 	background-color: #fff;
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+} */
 hr {
 	margin: 1rem 0;
 	color: inherit;
@@ -6495,13 +6495,7 @@ sub {
 sup {
 	top: -0.5em;
 }
-a {
-	color: #0d6efd;
-	text-decoration: underline;
-}
-a:hover {
-	color: #0a58ca;
-}
+
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
 	color: inherit;
@@ -10262,9 +10256,9 @@ fieldset:disabled .btn {
 .text-white {
 	color: #fff !important;
 }
-.text-body {
+/* .text-body {
 	color: #212529 !important;
-}
+} */
 .text-muted {
 	color: #6c757d !important;
 }
