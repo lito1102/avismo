@@ -1,4 +1,5 @@
 {% case section.settings.header_type%}
+  <!-- *****======HEADER STYLE 1 ======****** -->
   {% when 'header1' %}
 
   <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -85,7 +86,7 @@
 
           <div class="col-4 col-md-4 d-flex align-items-center justify-content-center">
             <div class="header1__nav-logo-center-wrapper">
-              <a href="#">
+              <a href="/">
                 {%- if section.settings.logo != blank -%}
                 {%- assign image_size = section.settings.logo_width | append: 'x' -%}
                   <img
@@ -173,18 +174,18 @@
                   <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
                     class="menu-drawer__account link link--text focus-inset">
                     {% render 'icon-account' %}
-                    {%- liquid
-                    if customer
-                      echo 'customer.account_fallback' | t
-                    else
-                      echo 'customer.log_in' | t
-                    endif
-                    -%}
+                    <span class="visually-hidden">
+                      {%- liquid
+                      if customer
+                        echo 'customer.account_fallback' | t
+                      else
+                        echo 'customer.log_in' | t
+                      endif
+                      -%}
+                    </span>
                   </a>
-                  {%- endif -%}
-                  
+                  {%- endif -%} 
                 </li>
-
                 <li class="header1__nav-right-list-item">  
                   <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset"
                     id="cart-icon-bubble">
@@ -285,6 +286,360 @@
   {%- if request.page_type != 'cart' -%}
     {%- render 'cart-notification' -%}
   {%- endif -%}
+
+  <!-- *****======HEADER STYLE 2 ======****** -->
+  {% when 'header2' %}
+
+  <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+  
+  <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+
+  <header class="header header2 header2--solid">
+    <div class="header2__wrapper">
+      <div class="container">
+        <div class="row mx-auto">
+          <div class="col-4 col-md-4 d-flex align-items-center justify-content-start">
+            <div class="header2__nav-logo-center-wrapper">
+              <a href="/">
+                {%- if section.settings.logo != blank -%}
+                {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+                <img
+                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                  src="{{ section.settings.logo | img_url: image_size }}" loading="lazy" class="header__heading-logo"
+                  width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
+                  alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
+                {%- else -%}
+                <h1 class="header1__nav-logo">
+                  {{ shop.name }}
+                </h1>
+                {%- endif -%}
+              </a>
+            </div>
+          </div>
+          <div class="col-4 col-md-4 d-flex align-items-center justify-content-center">
+            <nav class="header2__nav-left">
+              <ul class="header2__nav-left-list d-flex align-items-center">
+                {%- if section.settings.menu != blank -%}
+                  {%- for link in section.settings.menu.links -%}
+                    {%- if settings.mega_title == link.title -%}
+                      <li class="header2__nav-right-list-item header2__has-dropdown site-nav--is-megamenu">
+                        <a href="" class="header2__nav-right-link header2__nav--link-has-dropdown">
+                          {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+                        </a>
+                        <!-- Megamenu START -->
+                        <div class="nav-dropdown text-left megamenu">
+                          <div class="page-width">
+                            <div class="container">
+                              <div class="row">
+                                {% for childlink in link.links %}
+                                  <a href="#" class="megamenu__collection-img"></a>
+                                  <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <h5 class="megamenu__collection-heading py-3">
+                                      <a href="#">{{ childlink.title }}</a>
+                                    </h5>
+                                    <ul class="megamenu__list text-left nav-dropdown__list">
+                                      {% for grandchildlink in childlink.links %}
+                                        <li class="nav-dropdown__list-item">
+                                          <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
+                                            {{ grandchildlink.title }}
+                                          </a>
+                                        </li>
+                                      {%endfor%}
+                                    </ul>
+                                  </div>
+                                {% endfor %}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Megamenu END -->
+                      </li>
+                    {%- elsif link.links != blank -%}
+                      <li class="header2__nav-left-list-item header2__has-dropdown">
+                        <a href="" class="header2__nav-left-link header2__nav--link-has-dropdown">
+                          {{ link.title }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+                        </a>
+                        <!-- Dropdown Menu START -->
+                        <ul class="nav-dropdown text-left nav-dropdown__list">
+                          {% for childlink in link.links %}
+                          <li class="nav-dropdown__list-item">
+                            <a href="{{ childlink.url }}" class="nav-dropdown__link">{{ childlink.title }}</a>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                        <!-- Dropdown Menu END -->
+                      </li>
+                    {%- else -%}
+                      <li class="header2__nav-left-list-item">
+                        <a href="{{ link.url }}" class="header2__nav-left-link">
+                          {{ link.title | escape }}
+                        </a>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </ul>
+            </nav>
+          </div>
+          <div class="col-4 colmd-4 d-flex align-items-center justify-content-end">
+            <nav class="header2__nav-right">
+              <ul class="header2__nav-right-list d-flex align-items-center">
+                <li class="header2__nav-right-list-item">
+                  <a href="" class="header2__nav-right-link-controls">
+                    <span class="header2__nav-right-search"><i class="bi bi-search"></i></span>
+                  </a>
+                </li>
+                <li class="header2__nav-right-list-item">
+                  {%- if shop.customer_accounts_enabled -%}
+                  <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                    class="menu-drawer__account link link--text focus-inset">
+                    {% render 'icon-account' %}
+                    <span class="visually-hidden">
+                      {%- liquid
+                      if customer
+                      echo 'customer.account_fallback' | t
+                      else
+                      echo 'customer.log_in' | t
+                      endif
+                      -%}
+                    </span>
+                  </a>
+                  {%- endif -%}
+                </li>
+                <li class="header2__nav-right-list-item">
+                  <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset"
+                    id="cart-icon-bubble">
+                    {%- liquid
+                    if cart == empty
+                    render 'icon-cart'
+                    else
+                    render 'icon-cart'
+                    endif
+                    -%}
+                    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                    {%- if cart != empty -%}
+                    <div class="cart-count-bubble">
+                      {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                        {%- endif -%}
+                        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                    </div>
+                    {%- endif -%}
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="header2__mobile-nav-wrapper">
+      <nav class="nav nav1 nav-m1 position">
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-space-between mobile-content">
+            <div class="col-3 col-sm-4">
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
+                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+            </div>
+            <div class="col col-sm-4">
+              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
+                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
+                </a></div>
+            </div>
+            <div class="col-3 col-sm-4">
+              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
+                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-m1__content-wrapper">
+          <div class="container">
+            <nav class="nav-m1__main-nav">
+              <ul class="nav-m1__main-nav-list">
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
+                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  {%- if request.page_type != 'cart' -%}
+    {%- render 'cart-notification' -%}
+  {%- endif -%}
+
+  <!-- *****======HEADER STYLE 3 ======****** -->
+  {% when 'header3' %}
+
+  <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+  
+  <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+
+  <header class="header header3 header3--solid">
+    <div class="header3__wrapper">
+      <div class="container">
+        <div class="row mx-auto">
+          <div class="col-6 col-md-6 d-flex align-items-center justify-content-start">
+            <div class="header3__nav-logo-center-wrapper">
+              <a href="#">
+                {%- if section.settings.logo != blank -%}
+                {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+                <img
+                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                  src="{{ section.settings.logo | img_url: image_size }}" loading="lazy" class="header__heading-logo"
+                  width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
+                  alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
+                {%- else -%}
+                <h1 class="header1__nav-logo">
+                  {{ shop.name }}
+                </h1>
+                {%- endif -%}
+              </a>
+            </div>
+          </div>
+          <div class="col-6 col-md-6 d-flex align-items-center justify-content-end">
+            <nav class="header3__nav-left">
+              <ul class="header3__nav-left-list d-flex align-items-center justify-content-center">
+
+                {%- if section.settings.menu != blank -%}
+                  {%- for link in section.settings.menu.links -%}
+                    <li class="header3__nav-left-list-item">
+                      <a href="" class="header3__nav-left-link">
+                        {{ link.title | escape }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                {%- endif -%}
+
+
+
+
+                <li class="header3__nav-right-list-item"><a href="" class="header3__nav-right-link-controls"><span
+                      class="header3__nav-right-search"><i class="bi bi-search"></i></span></a></li>
+                <li class="header3__nav-right-list-item"><a href="" class="header3__nav-right-link-controls"><span
+                      class="header3__nav-right-user"><i class="bi bi-person"></i></span></a></li>
+                <li class="header3__nav-right-list-item"><a href="" class="header3__nav-right-link-controls"><span
+                      class="header3__nav-right-bag"><i class="bi bi-bag"></i></span></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="header3__mobile-nav-wrapper">
+      <nav class="nav nav1 nav-m1 position">
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-space-between mobile-content">
+            <div class="col-3 col-sm-4">
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
+                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+            </div>
+            <div class="col col-sm-4">
+              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
+                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
+                </a></div>
+            </div>
+            <div class="col-3 col-sm-4">
+              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
+                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-m1__content-wrapper">
+          <div class="container">
+            <nav class="nav-m1__main-nav">
+              <ul class="nav-m1__main-nav-list">
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
+                    class="heder-m1__main-nav-link d-down-btn">
+                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
+                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
+                    </ul>
+                  </nav>
+                </li>
+                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
+                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 
 {% endcase %}
 

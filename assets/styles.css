@@ -6547,7 +6547,7 @@ figure {
 }
 img,
 svg {
-	vertical-align: middle;
+	/* vertical-align: middle; */
 }
 table {
 	caption-side: bottom;
