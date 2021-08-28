@@ -227,6 +227,9 @@
 .header1__nav-right-user {
 	font-size: 1.8rem;
 }
+.header1__nav-right-search {
+	font-size: 2.2rem;
+}
 .header1__has-dropdown {
 	position: relative;
 	z-index: 7;
@@ -355,6 +358,9 @@
 .header2__nav-right-search,
 .header2__nav-right-user {
 	font-size: 1.8rem;
+}
+.header2__nav-right-search {
+	font-size: 2.2rem;
 }
 .header2__has-dropdown {
 	position: relative;
@@ -485,6 +491,9 @@
 .header3__nav-right-user {
 	font-size: 1.8rem;
 }
+.header3__nav-right-bag {
+	font-size: 2.2rem;
+}
 .header3__has-dropdown {
 	position: relative;
 	z-index: 7;
@@ -613,6 +622,9 @@
 .header4__nav-right-search,
 .header4__nav-right-user {
 	font-size: 1.8rem;
+}
+.header4__nav-right-search {
+	font-size: 2.2rem;
 }
 .header4__has-dropdown {
 	position: relative;
@@ -755,6 +767,9 @@
 .header5__nav-right-search,
 .header5__nav-right-user {
 	font-size: 1.8rem;
+}
+.header5__nav-right-search {
+	font-size: 2.2rem;
 }
 .header5__has-dropdown {
 	position: relative;
