@@ -1,5 +1,33 @@
-{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+<div class="hero hero1 position hero1--aligned-{{ section.settings.content_alignment }}">
+  {%- if section.settings.image != blank -%}
+    <img
+      srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: 'master' }} 360w,{%- endif -%}
+        {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: 'master' }} 535w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: 'master' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: 'master' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 2040 -%}{{ section.settings.image | img_url: '2040x' }} 2040w,{%- endif -%}"
+      src="{{ section.settings.image | img_url: 'master' }}"
+      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+      alt="{{ section.settings.image.alt | escape }}"
+      loading="lazy"
+      width="{{ section.settings.image.width }}"
+      class="hero1__bg"
+    >
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+  <div class="hero1__content-container">
+    <div class="hero1__info">
+      <h1 class="hero1__heading">{{ section.settings.hero_one_title }}</h1>
+      <p class="hero1__paragraph">{{ section.settings.hero_one_text }}</p>
+      <a href="{{ section.settings.button_link_one }}" class="hero1__cta">{{ section.settings.button_link_one_text }}</a>
+      <a href="{{ section.settings.button_link_two }}" class="hero1__cta">{{ section.settings.button_link_two_text }}</a>
+    </div>
+  </div>
+</div>
 
+{% comment %}
 <div class="image-with-text {% if section.settings.full_width %}image-with-text--full-width{% else %}page-width{% endif %} color-scheme-{{ section.settings.color_scheme }}">
   <div class="image-with-text__grid color-{{ section.settings.color_scheme }}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %} grid grid--gapless grid--1-col grid--2-col-tablet">
     <div class="grid__item">
@@ -22,7 +50,7 @@
             height="{{ section.settings.image.height }}"
           >
         {%- else -%}
-          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </div>
     </div>
@@ -48,10 +76,11 @@
     </div>
   </div>
 </div>
+{% endcomment %}
 
 {% schema %}
 {
-  "name": "t:sections.image-with-text.name",
+  "name": "Hero One",
   "class": "spaced-section spaced-section--full-width",
   "settings": [
     {
@@ -60,24 +89,58 @@
       "label": "t:sections.image-with-text.settings.image.label"
     },
     {
+      "type": "text",
+      "id": "hero_one_title",
+      "label": "Hero Title",
+      "default": "Summer Styles"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_one_text",
+      "label": "Hero Text",
+      "default": "Shop the latest end of the summer sale going on now."
+    },
+    {
+      "type": "url",
+      "id": "button_link_one",
+      "label": "Button link one"
+    },
+    {
+      "type": "url",
+      "id": "button_link_two",
+      "label": "Button link two"
+    },
+    {
+      "type": "text",
+      "id": "button_link_one_text",
+      "label": "Button one text",
+      "default": "SHOP SALE"
+    },
+    {
+      "type": "text",
+      "id": "button_link_two_text",
+      "label": "Button two text",
+      "default": "SHOP SWIMWEAR"
+    },
+    {
       "type": "select",
-      "id": "height",
+      "id": "content_alignment",
       "options": [
         {
-          "value": "adapt",
-          "label": "t:sections.image-with-text.settings.height.options__1.label"
+          "value": "left",
+          "label": "Left"
         },
         {
-          "value": "small",
-          "label": "t:sections.image-with-text.settings.height.options__2.label"
+          "value": "center",
+          "label": "Center"
         },
         {
-          "value": "large",
-          "label": "t:sections.image-with-text.settings.height.options__3.label"
+          "value": "right",
+          "label": "Right"
         }
       ],
-      "default": "adapt",
-      "label": "t:sections.image-with-text.settings.height.label"
+      "default": "left",
+      "label": "Hero content alignment"
     },
     {
       "type": "select",
@@ -174,7 +237,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "Hero One",
       "blocks": [
         {
           "type": "heading"
