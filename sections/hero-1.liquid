@@ -17,12 +17,34 @@
   {%- else -%}
     {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
   {%- endif -%}
+
+  <!-- HERO BLOCKS -->
   <div class="hero1__content-container">
     <div class="hero1__info">
-      <h1 class="hero1__heading">{{ section.settings.hero_one_title }}</h1>
-      <p class="hero1__paragraph">{{ section.settings.hero_one_text }}</p>
-      <a href="{{ section.settings.button_link_one }}" class="hero1__cta">{{ section.settings.button_link_one_text }}</a>
-      <a href="{{ section.settings.button_link_two }}" class="hero1__cta">{{ section.settings.button_link_two_text }}</a>
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {%- when 'heading' -%}
+
+            <h1 class="hero1__heading" {{ block.shopify_attributes }}>
+              {{ block.settings.hero_one_title | escape }}
+            </h1>
+
+          {%- when 'text' -%}
+
+            <p class="hero1__paragraph" {{ block.shopify_attributes }}>
+              {{ block.settings.hero_one_text | escape }}
+            </p>
+
+          {%- when 'button' -%}
+          
+            {%- if block.settings.button_label != blank -%}
+              <a href="{{ block.settings.button_link }}" class="hero1__cta" {{ block.shopify_attributes }}>
+                {{ block.settings.button_label | escape }}
+              </a>              
+            {%- endif -%}
+
+        {%- endcase -%}
+      {%- endfor -%}
     </div>
   </div>
 </div>
@@ -81,46 +103,11 @@
 {% schema %}
 {
   "name": "Hero One",
-  "class": "spaced-section spaced-section--full-width",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
-    },
-    {
-      "type": "text",
-      "id": "hero_one_title",
-      "label": "Hero Title",
-      "default": "Summer Styles"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_one_text",
-      "label": "Hero Text",
-      "default": "Shop the latest end of the summer sale going on now."
-    },
-    {
-      "type": "url",
-      "id": "button_link_one",
-      "label": "Button link one"
-    },
-    {
-      "type": "url",
-      "id": "button_link_two",
-      "label": "Button link two"
-    },
-    {
-      "type": "text",
-      "id": "button_link_one_text",
-      "label": "Button one text",
-      "default": "SHOP SALE"
-    },
-    {
-      "type": "text",
-      "id": "button_link_two_text",
-      "label": "Button two text",
-      "default": "SHOP SWIMWEAR"
     },
     {
       "type": "select",
@@ -141,64 +128,19 @@
       ],
       "default": "left",
       "label": "Hero content alignment"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "background-1",
-          "label": "t:sections.image-with-text.settings.color_scheme.options__1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.image-with-text.settings.color_scheme.options__2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.image-with-text.settings.color_scheme.options__3.label"
-        },
-        {
-          "value": "accent-1",
-          "label": "t:sections.image-with-text.settings.color_scheme.options__4.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.image-with-text.settings.color_scheme.options__5.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.image-with-text.settings.color_scheme.label"
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "image_first",
-          "label": "t:sections.image-with-text.settings.layout.options__1.label"
-        },
-        {
-          "value": "text_first",
-          "label": "t:sections.image-with-text.settings.layout.options__2.label"
-        }
-      ],
-      "default": "image_first",
-      "label": "t:sections.image-with-text.settings.layout.label",
-      "info": "t:sections.image-with-text.settings.layout.info"
     }
   ],
   "blocks": [
     {
       "type": "heading",
       "name": "t:sections.image-with-text.blocks.heading.name",
-      "limit": 1,
+      "limit": 2,
       "settings": [
         {
           "type": "text",
-          "id": "heading",
-          "default": "Image with text",
-          "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
+          "id": "hero_one_title",
+          "label": "Hero Title",
+          "default": "Summer Styles"
         }
       ]
     },
@@ -208,24 +150,23 @@
       "limit": 1,
       "settings": [
         {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-          "label": "t:sections.image-with-text.blocks.text.settings.text.label"
+          "type": "textarea",
+          "id": "hero_one_text",
+          "label": "Hero Text",
+          "default": "Shop the latest end of the summer sale going on now."
         }
       ]
     },
     {
       "type": "button",
       "name": "t:sections.image-with-text.blocks.button.name",
-      "limit": 1,
+      "limit": 2,
       "settings": [
         {
           "type": "text",
           "id": "button_label",
-          "default": "Button label",
           "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
-          "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+          "default": "SHOP SWIMWEAR"
         },
         {
           "type": "url",
