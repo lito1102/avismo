@@ -1588,7 +1588,7 @@ input[type='checkbox'] {
 
 .cart-count-bubble {
 	position: absolute;
-	background-color: rgb(var(--color-base-accent-1));
+	background-color: var(--heading-color);
 	color: rgb(var(--color-base-solid-button-labels));
 	height: 1.7rem;
 	width: 1.7rem;
@@ -1597,8 +1597,9 @@ input[type='checkbox'] {
 	justify-content: center;
 	align-items: center;
 	font-size: 0.9rem;
-	bottom: 0.8rem;
-	left: 2.2rem;
+	font-weight: 400;
+	bottom: 2.5rem;
+	left: 2.1rem;
 	line-height: 1.1;
 }
 
@@ -1819,7 +1820,7 @@ input[type='checkbox'] {
 
 .header__icon--cart {
 	position: relative;
-	margin-right: -1.2rem;
+	/* margin-right: -1.2rem; */
 }
 
 @media screen and (max-width: 989px) {

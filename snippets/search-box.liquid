@@ -1,0 +1,49 @@
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  
+    
+    <button type="button" class="btn-close text-reset close-search" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  
+  <div class="offcanvas-body">
+    <form class="search" action="/search" style="width: 100%;">
+      <div class="container">
+        <div class="search-container">
+          
+            <div class="search-fields">
+              <input type="text" class="search-box" placeholder="Search" name="q" value="{{ search.terms | escape }}" />
+              <button type="submit" class="search-btn">
+                <span>
+                  <i class="bi bi-search"></i>
+                </span>
+              </button>
+            </div>
+              <!-- <input type="submit" class="search-btn" value="Search" /> -->
+            
+          
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% style %}
+  .close-search{
+    font-size: 2rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+  }
+  .search-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .search-fields{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+
+{% endstyle %}
