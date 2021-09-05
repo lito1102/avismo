@@ -1,0 +1,162 @@
+<div class="hero hero2">
+  <div class="hero2__collection1">
+  {%- if section.settings.image_1 != blank -%}
+    <img
+      srcset="{%- if section.settings.image_1.width >= 165 -%}{{ section.settings.image_1 | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if section.settings.image_1.width >= 360 -%}{{ section.settings.image_1 | img_url: 'master' }} 360w,{%- endif -%}
+        {%- if section.settings.image_1.width >= 535 -%}{{ section.settings.image_1 | img_url: 'master' }} 535w,{%- endif -%}
+        {%- if section.settings.image_1.width >= 750 -%}{{ section.settings.image_1 | img_url: 'master' }} 750w,{%- endif -%}
+        {%- if section.settings.image_1.width >= 2000 -%}{{ section.settings.image_1 | img_url: 'master' }} 2000w,{%- endif -%}
+        {%- if section.settings.image_1.width >= 2040 -%}{{ section.settings.image_1 | img_url: '2040x' }} 2040w,{%- endif -%}"
+      src="{{ section.settings.image_1 | img_url: 'master' }}"
+      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+      alt="{{ section.settings.image_1.alt | escape }}"
+      loading="lazy"
+      width="{{ section.settings.image_1.width }}"
+      class="hero2__bg"
+    >
+  {%- else -%}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+
+    {% assign opacity_1 = section.settings.opacity_1 | divided_by: 100.00 %}
+    <div class="hero2__content-container" style="background-color: {{ section.settings.background_img_1 | color_modify: 'alpha', opacity_1 }};">
+      <div class="hero2__info">
+        <h1 class="hero2__title">
+          {{ section.settings.heading_title_1 }}
+        </h1>
+
+        {%- if section.settings.button_label_1 != blank -%}
+          <a href="{{ section.settings.button_link_1 }}" class="hero2__cta" {{ block.shopify_attributes }}>
+            {{ section.settings.button_label_1 | escape }}
+          </a>
+        {%- endif -%}
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="hero2__collection2">
+    {%- if section.settings.image_2 != blank -%}
+    <img
+      srcset="{%- if section.settings.image_2.width >= 165 -%}{{ section.settings.image_2 | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 360 -%}{{ section.settings.image_2 | img_url: 'master' }} 360w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 535 -%}{{ section.settings.image_2 | img_url: 'master' }} 535w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | img_url: 'master' }} 750w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | img_url: 'master' }} 2000w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 2040 -%}{{ section.settings.image_2 | img_url: '2040x' }} 2040w,{%- endif -%}"
+      src="{{ section.settings.image_2 | img_url: 'master' }}"
+      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+      alt="{{ section.settings.image_2.alt | escape }}"
+      loading="lazy"
+      width="{{ section.settings.image_2.width }}"
+      class="hero2__bg"
+    >
+  {%- else -%}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+
+    {% assign opacity_2 = section.settings.opacity_2 | divided_by: 100.00 %}
+    <div class="hero2__content-container" style="background-color: {{ section.settings.background_img_2 | color_modify: 'alpha', opacity_2 }};">
+      <div class="hero2__info2">
+        <h1 class="hero2__title">
+          {{ section.settings.heading_title_2 }}
+        </h1>
+
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="hero2__cta" {{ block.shopify_attributes }}>
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Two",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "color",
+      "id": "background_img_1",
+      "label": "Hero image background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity_1",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Opacity",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "heading_title_1",
+      "label": "Heading title one",
+      "default": "Mens Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "default": "SHOP MENS"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "color",
+      "id": "background_img_2",
+      "label": "Hero image background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity_2",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Opacity",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "heading_title_2",
+      "label": "Heading title two",
+      "default": "Womens Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "default": "SHOP WOMENS"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Two"
+    }
+  ]
+}
+{% endschema %}

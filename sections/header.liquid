@@ -10,7 +10,8 @@
   <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-  <header class="header header1 header1--solid">
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <header class="header header1" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
     <div class="header1__wrapper py-3">
       <div class="container">
         <div class="row mx-auto">
@@ -308,7 +309,8 @@
   <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-  <header class="header header2 header2--solid">
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <header class="header header2" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
     <div class="header2__wrapper">
       <div class="container">
         <div class="row mx-auto">
@@ -531,7 +533,8 @@
   <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-  <header class="header header3 header3--solid">
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <header class="header header3" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
     <div class="header3__wrapper">
       <div class="container">
         <div class="row mx-auto">
@@ -750,7 +753,8 @@
   <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-  <header class="header header4 header4--solid">
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <header class="header header4" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
     <div class="header4__wrapper">
       <div class="container">
         <div class="row">
@@ -972,7 +976,8 @@
   <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-  <header class="header header5 header5--solid">
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <header class="header header5" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
     <div class="header5__wrapper py-3">
       <div class="container">
         <div class="row mx-auto">
@@ -1275,6 +1280,21 @@
       "default": 100,
       "unit": "t:sections.header.settings.logo_width.unit",
       "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "color",
+      "id": "header_background_color",
+      "label": "Header background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Opacity",
+      "default": 100
     },
     {
       "type": "link_list",
