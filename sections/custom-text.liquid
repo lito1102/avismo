@@ -1,0 +1,28 @@
+<section class="paragraph">
+  <div class="container">
+    <div class="paragraph__wrapper text-center">
+      <p class="paragraph__text">
+        {{ section.settings.custom_text }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Text",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_text",
+      "label": "Add a welcome message or talk about your store",
+      "default": "From the beautiful and iconic Malibu beach, Avismo is the new fashion thinking always on confortability and style in every design for the ultamate comfort. -"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custome Text"
+    }
+  ]
+}
+{% endschema %} 
