@@ -1,0 +1,207 @@
+<section class="collection collection2">
+  <div class="container">
+    <h2 class="featured-product-title">Popular Designs</h2>
+    <div class="row gy-3">
+      <div class="col-6 col-md-6 col-xs-6">
+        <div class="collection2__collection-item">
+          <div class="collection2__product-img">
+            <div class="collection2__heart"><i class="bi bi-heart"></i></div>
+            <a href="#">
+              <img src="./assets/swimsuit3.png" class="rounded mx-auto d-block" alt="">
+            </a>
+          </div>
+          <div class="collection2__product-info">
+            <div class="collection2__product-details"><span class="collection2__product-title">One peace
+                swimsuit</span><span class="collection2__product-price">$120.00</span></div>
+            <div class="collection2__product-colors">
+              <div class="collection2__color collection2__color--blue"></div>
+              <div class="collection2__color collection2__color--black"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-xs-6">
+        <div class="collection2__collection-item">
+          <div class="collection2__product-img">
+            <div class="collection2__heart"><i class="bi bi-heart"></i></div>
+            <a href="#">
+              <img src="./assets/swimsuit2.png" class="rounded mx-auto d-block" alt="">
+            </a>
+          </div>
+          <div class="collection2__product-info">
+            <div class="collection2__product-details"><span class="collection2__product-title">Light Blue
+                Dress</span><span class="collection2__product-price">$120.00</span></div>
+            <div class="collection2__product-colors">
+              <div class="collection2__color collection2__color--blue"></div>
+              <div class="collection2__color collection2__color--white"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="hero hero1 position hero1--aligned-{{ section.settings.content_alignment }}">
+  {%- if section.settings.image != blank -%}
+    <img
+      srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: 'master' }} 360w,{%- endif -%}
+        {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: 'master' }} 535w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: 'master' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: 'master' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 2040 -%}{{ section.settings.image | img_url: '2040x' }} 2040w,{%- endif -%}"
+      src="{{ section.settings.image | img_url: 'master' }}"
+      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+      alt="{{ section.settings.image.alt | escape }}"
+      loading="lazy"
+      width="{{ section.settings.image.width }}"
+      class="hero1__bg"
+    >
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+
+  <!-- HERO BLOCKS -->
+  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
+  <div class="hero1__content-container" style="background-color: {{ section.settings.background | color_modify: 'alpha', opacity }};">
+    <div class="hero1__info">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {%- when 'heading' -%}
+
+            <h1 class="hero1__heading" {{ block.shopify_attributes }}>
+              {{ block.settings.hero_one_title | escape }}
+            </h1>
+
+          {%- when 'text' -%}
+
+            <p class="hero1__paragraph" {{ block.shopify_attributes }}>
+              {{ block.settings.hero_one_text | escape }}
+            </p>
+
+          {%- when 'button' -%}
+          
+            {%- if block.settings.button_label != blank -%}
+              <a href="{{ block.settings.button_link }}" class="hero1__cta" {{ block.shopify_attributes }}>
+                {{ block.settings.button_label | escape }}
+              </a>              
+            {%- endif -%}
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection group two",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Hero image background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Opacity",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Hero content alignment"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.image-with-text.blocks.heading.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "hero_one_title",
+          "label": "Hero Title",
+          "default": "Summer Styles"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-with-text.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "hero_one_text",
+          "label": "Hero Text",
+          "default": "Shop the latest end of the summer sale going on now."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.image-with-text.blocks.button.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+          "default": "SHOP SWIMWEAR"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection group two",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

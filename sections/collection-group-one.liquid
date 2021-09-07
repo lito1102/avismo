@@ -1,19 +1,40 @@
+{%- assign collecton1 = collections[section.settings.collection1] -%}
+
 <section class="collection collection1">
   <div class="container">
-    <h2 class="collection1__heading">Shop Collection</h2>
+    <h2 class="collection1__heading">{{ section.settings.collection_section_title }}</h2>
     <div class="row align-items-md-stretch gy-3">
       <div class="col-md-6">
-        <div class="h-100 bg-dark rounded-3 position">
+        <div class="h-100 rounded-3 position">
           <a href="#">
-            <img
-              src="https://images.unsplash.com/photo-1535182463927-440364075d9c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
-              alt="" class="collection1__img">
-            </a>
-          <div class="collection1__info">
+            {%- if section.settings.image_collection_1 != blank -%}
+              <img
+                srcset="{%- if section.settings.image_collection_1.width >= 165 -%}{{ section.settings.image_collection_1 | img_url: '165x' }} 165w,{%- endif -%}
+                {%- if section.settings.image_collection_1.width >= 360 -%}{{ section.settings.image_collection_1 | img_url: 'master' }} 360w,{%- endif -%}
+                {%- if section.settings.image_collection_1.width >= 535 -%}{{ section.settings.image_collection_1 | img_url: 'master' }} 535w,{%- endif -%}
+                {%- if section.settings.image_collection_1.width >= 750 -%}{{ section.settings.image_collection_1 | img_url: 'master' }} 750w,{%- endif -%}
+                {%- if section.settings.image_collection_1.width >= 2000 -%}{{ section.settings.image_collection_1 | img_url: 'master' }} 2000w,{%- endif -%}
+                {%- if section.settings.image_collection_1.width >= 2040 -%}{{ section.settings.image_collection_1 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                src="{{ section.settings.image_collection_1 | img_url: 'master' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ section.settings.image_collection_1.alt | escape }}" loading="lazy" width="{{ section.settings.image.width }}"
+                class="collection1__img"
+              >
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+
+          {% assign opacity_collection_1 = section.settings.opacity_collection_1 | divided_by: 100.00 %}
+          <div class="collection1__info" style="background-color: {{ section.settings.collection_bg_1 | color_modify: 'alpha', opacity_collection_1 }};">
             <div class="collection1__info-content">
-              <h2 class="collection1__title">Fury Collection</h2>
-              <p class="collection1__paragraph">Mens trending fashion design.</p><a href="#"
-                class="collection1__cta">SHOP COLLECTION</a>
+              <h2 class="collection1__title">{{ section.settings.collection1_title }}</h2>
+              <p class="collection1__paragraph">{{ section.settings.collection1_description }}</p>
+              {%- if section.settings.button_label_1 != blank -%}
+                <a href="{{ section.settings.button_link_1 }}" class="collection1__cta">
+                  {{ section.settings.button_label_1 | escape }}
+                </a>
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -21,15 +42,34 @@
       <div class="col-md-6">
         <div class="h-100 bg-dark rounded-3 position">
           <a href="#">
+            {%- if section.settings.image_collection_2 != blank -%}
             <img
-              src="https://images.unsplash.com/photo-1526812844132-7681a0a01b5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-              alt="" class="collection1__img">
-            </a>
-          <div class="collection1__info">
+              srcset="{%- if section.settings.image_collection_2.width >= 165 -%}{{ section.settings.image_collection_2 | img_url: '165x' }} 165w,{%- endif -%}
+              {%- if section.settings.image_collection_2.width >= 360 -%}{{ section.settings.image_collection_2 | img_url: 'master' }} 360w,{%- endif -%}
+              {%- if section.settings.image_collection_2.width >= 535 -%}{{ section.settings.image_collection_2 | img_url: 'master' }} 535w,{%- endif -%}
+              {%- if section.settings.image_collection_2.width >= 750 -%}{{ section.settings.image_collection_2 | img_url: 'master' }} 750w,{%- endif -%}
+              {%- if section.settings.image_collection_2.width >= 2000 -%}{{ section.settings.image_collection_2 | img_url: 'master' }} 2000w,{%- endif -%}
+              {%- if section.settings.image_collection_2.width >= 2040 -%}{{ section.settings.image_collection_2 | img_url: '2040x' }} 2040w,{%- endif -%}"
+              src="{{ section.settings.image_collection_2 | img_url: 'master' }}"
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+              alt="{{ section.settings.image_collection_2.alt | escape }}" loading="lazy" width="{{ section.settings.image.width }}"
+              class="collection1__img">
+            {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+
+          {% assign opacity_collection_2 = section.settings.opacity_collection_2 | divided_by: 100.00 %}
+          <div class="collection1__info" style="background-color: {{ section.settings.collection_bg_2 | color_modify: 'alpha', opacity_collection_2 }};">
             <div class="collection1__info-content">
-              <h2 class="collection1__title">Summer Dresses</h2>
-              <p class="collection1__paragraph">Wear the summer impressions.</p><a href="#"
-                class="collection1__cta">SHOP COLLECTION</a>
+              <h2 class="collection1__title">{{ section.settings.collection2_title }}</h2>
+              <p class="collection1__paragraph">{{ section.settings.collection2_description }}</p>
+              
+              {%- if section.settings.button_label_2 != blank -%}
+                <a href="{{ section.settings.button_link_2 }}" class="collection1__cta">
+                  {{ section.settings.button_label_2 | escape }}
+                </a>
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -43,19 +83,25 @@
   "name": "Collection group one",
   "settings": [
     {
-      "type": "collection",
-      "id": "featured_collection",
-      "label": "Featured collection"
+      "type": "text",
+      "id": "collection_section_title",
+      "label": "Collection section title",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_collection_1",
+      "label": "Image collection 1"
     },
     {
       "type": "color",
-      "id": "background",
-      "label": "Hero image background",
+      "id": "collection_bg_1",
+      "label": "Collection one image background",
       "default": "#000000"
     },
     {
       "type": "range",
-      "id": "opacity",
+      "id": "opacity_collection_1",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -63,86 +109,75 @@
       "default": 10
     },
     {
-      "type": "select",
-      "id": "content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Hero content alignment"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "t:sections.image-with-text.blocks.heading.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "hero_one_title",
-          "label": "Hero Title",
-          "default": "Summer Styles"
-        }
-      ]
+      "type": "text",
+      "id": "collection1_title",
+      "label": "Collection 1 title",
+      "default": "Fury Line"
     },
     {
       "type": "text",
-      "name": "t:sections.image-with-text.blocks.text.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "hero_one_text",
-          "label": "Hero Text",
-          "default": "Shop the latest end of the summer sale going on now."
-        }
-      ]
+      "id": "collection1_description",
+      "label": "Collection 1 description",
+      "default": "Mens trending fashion design."
     },
     {
-      "type": "button",
-      "name": "t:sections.image-with-text.blocks.button.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
-          "default": "SHOP SWIMWEAR"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
-        }
-      ]
+      "type": "text",
+      "id": "button_label_1",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "default": "SHOP COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_collection_2",
+      "label": "Image collection 2"
+    },
+    {
+      "type": "color",
+      "id": "collection_bg_2",
+      "label": "Collection two image background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity_collection_2",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Opacity",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "collection2_title",
+      "label": "Collection 2 title",
+      "default": "Summer Dresses"
+    },
+    {
+      "type": "text",
+      "id": "collection2_description",
+      "label": "Collection 2 description",
+      "default": "Wear the summer impressions."
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "default": "SHOP COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
     }
   ],
   "presets": [
     {
-      "name": "Collection group one",
-      "blocks": [
-        {
-          "type": "heading"
-        },
-        {
-          "type": "text"
-        },
-        {
-          "type": "button"
-        }
-      ]
+      "name": "Collection group one"
     }
   ]
 }
