@@ -1,27 +1,183 @@
-<section class="t-img t-img2">
+<section class="t-img t-img2" style="background-color: {{ section.settings.bg_color }};">
   <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="row flex-lg align-items-center g-5 py-5" style="flex-direction: {{ section.settings.content_order }};">
       <div class="col-lg-6">
         <div class="t-img2__info-wrapper">
-          <span class="t-img1__sub-top">
-            NEW SWIMWEAR COLLECTION
-          </span>
-          <h1 class="mb-3 t-img2__heading">
-            Our New Collection
-          </h1>
-          <p class="t-img2__paragraph">Soaking in the sun or tanning your perfect shade, our swimwear collection fits every summer challenge with our beautiful designs wether its one peace ot a two peace bikini. Fit the summer comfortably</p>
-          <div class="gap-2 d-md-flex justify-content-md-start mt-5">
-            <a href="#" class="t-img2__cta">
-              SHOP SWIMWEAR
-            </a>
-          </div>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {%- when 'top_heading' -%}
+              <span class="t-img1__sub-top" style="color: {{ block.settings.top_heading_color }};">
+                {{ block.settings.top_heading }}
+              </span>
+
+              {%- when 'heading' -%}
+              <h1 class="mb-3 t-img2__heading" style="color: {{ block.settings.main_heading_color }};">
+                {{ block.settings.main_heading }}
+              </h1>
+
+              {%- when 'text' -%}
+              <p class="t-img2__paragraph">
+                {{ block.settings.featured_text }}
+              </p>
+
+              {%- when 'button' -%}
+              
+              {%- if block.settings.button_label != blank -%}
+                <a href="{{ block.settings.button_link }}" class="t-img2__cta mt-4" style="margin-right: 6px;" {{ block.shopify_attributes }}>
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+              
+            {% endcase %}
+          {%- endfor -%}
         </div>
       </div>
       <div class="col-15 col-sm-8 col-lg-6">
         <div class="t-img2__img-wrapper">
-          <img src="https://images.unsplash.com/photo-1551899371-8755b2691686?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80" class="d-block mx-lg-auto img-fluid" loading="lazy" />
+          {%- if section.settings.featured_image != blank -%}
+            <img
+              srcset="{%- if section.settings.featured_image.width >= 165 -%}{{ section.settings.featured_image | img_url: '165x' }} 165w,{%- endif -%}
+                    {%- if section.settings.featured_image.width >= 360 -%}{{ section.settings.featured_image | img_url: 'master' }} 360w,{%- endif -%}
+                    {%- if section.settings.featured_image.width >= 535 -%}{{ section.settings.featured_image | img_url: 'master' }} 535w,{%- endif -%}
+                    {%- if section.settings.featured_image.width >= 750 -%}{{ section.settings.featured_image | img_url: 'master' }} 750w,{%- endif -%}
+                    {%- if section.settings.featured_image.width >= 2000 -%}{{ section.settings.featured_image | img_url: 'master' }} 2000w,{%- endif -%}
+                    {%- if section.settings.featured_image.width >= 2040 -%}{{ section.settings.featured_image | img_url: '2040x' }} 2040w,{%- endif -%}"
+              src="{{ section.settings.featured_image | img_url: 'master' }}"
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+              alt="{{ section.settings.image.alt | escape }}" 
+              loading="lazy" 
+              width="{{ section.settings.image.width }}"
+            >
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
         </div>
       </div>
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Featured Image with Text",
+  "settings": [
+  {
+    "type": "color",
+    "id": "bg_color",
+    "label": "Background color",
+    "default": "#f9f4ee"
+  },
+  {
+    "type": "image_picker",
+    "id": "featured_image",
+    "label": "Featured Image"
+  },
+  {
+    "type": "select",
+    "id": "content_order",
+    "label": "Content Order",
+    "options": [
+      {
+        "value": "row",
+        "label": "Text and Image"
+      },
+      {
+        "value": "row-reverse",
+        "label": "Image and Text"
+      }
+    ],
+      "default": "row"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "top_heading",
+      "name": "Top Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "top_heading",
+          "label": "Top Heading",
+          "default": "NEW SWIMWEAR COLLECTION"
+        },
+        {
+          "type": "color",
+          "id": "top_heading_color",
+          "label": "Top heading color",
+          "default": "#b96f4a"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Main Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_heading",
+          "label": "Main Heading",
+          "default": "Our New Collection"
+        },
+        {
+          "type": "color",
+          "id": "main_heading_color",
+          "label": "Main heading color",
+          "default": "#121212"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-with-text.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "featured_text",
+          "label": "Featured Text",
+          "default": "Soaking in the sun or tanning your perfect shade, our swimwear collection fits every summer challenge with our beautiful designs wether its one peace ot a two peace bikini. Fit the summer comfortably."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.image-with-text.blocks.button.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+          "default": "SHOP SWIMWEAR"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Image with Text",
+      "blocks": [
+        {
+          "type": "top_heading"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
