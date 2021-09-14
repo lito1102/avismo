@@ -1,0 +1,70 @@
+{%- assign collection = collections[section.settings.collection] -%}
+
+<section class="section-products products">
+  <div class="container">
+    <h2 class="section-products-title">{{ collection.title }}</h2>
+    <div class="row gx-3 gy-3">
+      {% for product in collection.products limit: section.settings.max_products %}
+        <div class="col-6 col-lg-3 col-md-3 col-sm-3">
+          <a href="{{ product.url }}" class="product-link position">
+            <img src="{{ product.featured_image | img_url: 'master' }}" class="mx-auto img-fluid d-block img-product" alt="">
+            <img src="{{ product.images.last | img_url: 'master' }}" class="mx-auto img-fluid d-block h-img" alt="">
+          </a>
+          <div class="product-info text-center mx-auto">
+            {%- if section.settings.show_product_collection_name == true -%}
+              <span class="product-title">
+                {{ product.title }}
+              </span>
+            {%- endif -%}
+
+            {%- if section.settings.show_product_collection_price == true -%}
+              <a href="{{ product.url }}" class="products-link">
+                <span class="product-price">{{ product.price | money_with_currency }}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+  {
+    "name": "Single products",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection",
+        "info": "Choose a Collection"
+      },
+      {
+        "type": "text",
+        "id": "max_products",
+        "label": "Maximum Amount of Products",
+        "default": "8"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_collection_name",
+        "label": "Show product name",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_collection_price",
+        "label": "Show product price",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Single products",
+        "category": "Collection"
+      }
+    ]
+  }
+
+{% endschema %}
