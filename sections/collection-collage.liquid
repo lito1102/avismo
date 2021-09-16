@@ -1,0 +1,67 @@
+<section class="gallery gallery1">
+  <div class="container overflow-hidden">
+    <h2 class="gallery1__title gallery1__title--aligned-left">
+      {{ section.settings.section_heading }}
+    </h2>
+    <div class="row gy-1 gx-3">
+      <div class="col-lg-6">
+        <div class="gallery1__item">
+          <img
+            src="https://images.unsplash.com/photo-1626769171572-89a265d53a81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"
+            alt="Summer dress" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row gy-3">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="gallery1__item">
+              <img
+                src="https://images.unsplash.com/photo-1557871857-4b140ee1956b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+                alt="Summer dress" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="gallery1__item">
+              <img
+                src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
+                alt="Summer dress" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="gallery1__item">
+              <img
+                src="https://images.unsplash.com/photo-1577900232427-18219b9166a0?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+                alt="Summer dress" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="gallery1__item">
+              <img
+                src="https://images.unsplash.com/photo-1624281043172-16ff234c2a14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+                alt="Summer dress" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fashion collage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Look Book Catalog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fashion collage"
+    }
+  ]
+}
+{% endschema %}
