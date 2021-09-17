@@ -6,39 +6,124 @@
     <div class="row gy-1 gx-3">
       <div class="col-lg-6">
         <div class="gallery1__item">
-          <img
-            src="https://images.unsplash.com/photo-1626769171572-89a265d53a81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"
-            alt="Summer dress" class="img-fluid">
+          <a href="{{ section.settings.img_1_link }}">
+            {%- if section.settings.img_1 != blank -%}
+              <img
+                srcset="{%- if section.settings.img_1.width >= 165 -%}{{ section.settings.img_1 | img_url: '165x' }} 165w,{%- endif -%}
+                      {%- if section.settings.img_1.width >= 360 -%}{{ section.settings.img_1 | img_url: 'master' }} 360w,{%- endif -%}
+                      {%- if section.settings.img_1.width >= 535 -%}{{ section.settings.img_1 | img_url: 'master' }} 535w,{%- endif -%}
+                      {%- if section.settings.img_1.width >= 750 -%}{{ section.settings.img_1 | img_url: 'master' }} 750w,{%- endif -%}
+                      {%- if section.settings.img_1.width >= 2000 -%}{{ section.settings.img_1 | img_url: 'master' }} 2000w,{%- endif -%}
+                      {%- if section.settings.img_1.width >= 2040 -%}{{ section.settings.img_1 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                src="{{ section.settings.img_1 | img_url: 'master' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ section.settings.image.alt | escape }}" 
+                loading="lazy" 
+                width="{{ section.settings.image.width }}"
+                class="img-fluid"
+              >
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="row gy-3">
           <div class="col-lg-6 col-md-6 col-12">
             <div class="gallery1__item">
-              <img
-                src="https://images.unsplash.com/photo-1557871857-4b140ee1956b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-                alt="Summer dress" class="img-fluid">
+              <a href="{{ section.settings.img_2_link }}">
+                {%- if section.settings.img_2 != blank -%}
+                  <img
+                    srcset="{%- if section.settings.img_2.width >= 165 -%}{{ section.settings.img_2 | img_url: '165x' }} 165w,{%- endif -%}
+                          {%- if section.settings.img_2.width >= 360 -%}{{ section.settings.img_2 | img_url: 'master' }} 360w,{%- endif -%}
+                          {%- if section.settings.img_2.width >= 535 -%}{{ section.settings.img_2 | img_url: 'master' }} 535w,{%- endif -%}
+                          {%- if section.settings.img_2.width >= 750 -%}{{ section.settings.img_2 | img_url: 'master' }} 750w,{%- endif -%}
+                          {%- if section.settings.img_2.width >= 2000 -%}{{ section.settings.img_2 | img_url: 'master' }} 2000w,{%- endif -%}
+                          {%- if section.settings.img_2.width >= 2040 -%}{{ section.settings.img_2 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                    src="{{ section.settings.img_2 | img_url: 'master' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ section.settings.image.alt | escape }}" 
+                    loading="lazy" 
+                    width="{{ section.settings.image.width }}"
+                    class="img-fluid"
+                  >
+                {%- else -%}
+                  {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-12">
             <div class="gallery1__item">
-              <img
-                src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
-                alt="Summer dress" class="img-fluid">
+              <a href="{{ section.settings.img_3_link }}">
+                {%- if section.settings.img_3 != blank -%}
+                  <img
+                    srcset="{%- if section.settings.img_3.width >= 165 -%}{{ section.settings.img_3 | img_url: '165x' }} 165w,{%- endif -%}
+                          {%- if section.settings.img_3.width >= 360 -%}{{ section.settings.img_3 | img_url: 'master' }} 360w,{%- endif -%}
+                          {%- if section.settings.img_3.width >= 535 -%}{{ section.settings.img_3 | img_url: 'master' }} 535w,{%- endif -%}
+                          {%- if section.settings.img_3.width >= 750 -%}{{ section.settings.img_3 | img_url: 'master' }} 750w,{%- endif -%}
+                          {%- if section.settings.img_3.width >= 2000 -%}{{ section.settings.img_3 | img_url: 'master' }} 2000w,{%- endif -%}
+                          {%- if section.settings.img_3.width >= 2040 -%}{{ section.settings.img_3 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                    src="{{ section.settings.img_3 | img_url: 'master' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ section.settings.image.alt | escape }}" 
+                    loading="lazy" 
+                    width="{{ section.settings.image.width }}"
+                    class="img-fluid"
+                  >
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-12">
             <div class="gallery1__item">
-              <img
-                src="https://images.unsplash.com/photo-1577900232427-18219b9166a0?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-                alt="Summer dress" class="img-fluid">
+              <a href="{{ section.settings.img_4_link }}">
+                {%- if section.settings.img_4 != blank -%}
+                  <img
+                    srcset="{%- if section.settings.img_4.width >= 165 -%}{{ section.settings.img_4 | img_url: '165x' }} 165w,{%- endif -%}
+                          {%- if section.settings.img_4.width >= 360 -%}{{ section.settings.img_4 | img_url: 'master' }} 360w,{%- endif -%}
+                          {%- if section.settings.img_4.width >= 535 -%}{{ section.settings.img_4 | img_url: 'master' }} 535w,{%- endif -%}
+                          {%- if section.settings.img_4.width >= 750 -%}{{ section.settings.img_4 | img_url: 'master' }} 750w,{%- endif -%}
+                          {%- if section.settings.img_4.width >= 2000 -%}{{ section.settings.img_4 | img_url: 'master' }} 2000w,{%- endif -%}
+                          {%- if section.settings.img_4.width >= 2040 -%}{{ section.settings.img_4 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                    src="{{ section.settings.img_4 | img_url: 'master' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ section.settings.image.alt | escape }}" 
+                    loading="lazy" 
+                    width="{{ section.settings.image.width }}"
+                    class="img-fluid"
+                  >
+                {%- else -%}
+                  {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-12">
             <div class="gallery1__item">
-              <img
-                src="https://images.unsplash.com/photo-1624281043172-16ff234c2a14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-                alt="Summer dress" class="img-fluid">
+              <a href="{{ section.settings.img_5_link }}">
+                {%- if section.settings.img_5 != blank -%}
+                  <img
+                    srcset="{%- if section.settings.img_5.width >= 165 -%}{{ section.settings.img_5 | img_url: '165x' }} 165w,{%- endif -%}
+                          {%- if section.settings.img_5.width >= 360 -%}{{ section.settings.img_5 | img_url: 'master' }} 360w,{%- endif -%}
+                          {%- if section.settings.img_5.width >= 535 -%}{{ section.settings.img_5 | img_url: 'master' }} 535w,{%- endif -%}
+                          {%- if section.settings.img_5.width >= 750 -%}{{ section.settings.img_5 | img_url: 'master' }} 750w,{%- endif -%}
+                          {%- if section.settings.img_5.width >= 2000 -%}{{ section.settings.img_5 | img_url: 'master' }} 2000w,{%- endif -%}
+                          {%- if section.settings.img_5.width >= 2040 -%}{{ section.settings.img_5 | img_url: '2040x' }} 2040w,{%- endif -%}"
+                    src="{{ section.settings.img_5 | img_url: 'master' }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ section.settings.image.alt | escape }}" 
+                    loading="lazy" 
+                    width="{{ section.settings.image.width }}"
+                    class="img-fluid"
+                  >
+                {%- else -%}
+                  {{ 'product-4' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
             </div>
           </div>
         </div>
@@ -56,6 +141,56 @@
       "id": "section_heading",
       "label": "Heading",
       "default": "Look Book Catalog"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_1",
+      "label": "Image collection 1"
+    },
+    {
+      "type": "url",
+      "id": "img_1_link",
+      "label": "Image collection URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_2",
+      "label": "Image collection 2"
+    },
+    {
+      "type": "url",
+      "id": "img_2_link",
+      "label": "Image collection URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_3",
+      "label": "Image collection 3"
+    },
+    {
+      "type": "url",
+      "id": "img_3_link",
+      "label": "Image collection URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_4",
+      "label": "Image collection 4"
+    },
+    {
+      "type": "url",
+      "id": "img_4_link",
+      "label": "Image collection URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_5",
+      "label": "Image collection 5"
+    },
+    {
+      "type": "url",
+      "id": "img_5_link",
+      "label": "Image collection URL"
     }
   ],
   "presets": [
