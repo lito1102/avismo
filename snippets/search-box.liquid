@@ -6,19 +6,16 @@
   <div class="offcanvas-body d-flex align-items-center justify-content-center">
     <form class="search" action="/search" style="width: 100%;">
       <div class="container">
-        <div class="search-container">
-          
-            <div class="search-fields">
-              <input type="text" class="search-box" placeholder="Search" name="q" value="{{ search.terms | escape }}" />
-              <button type="submit" class="search-btn">
-                <span>
-                  <i class="bi bi-search"></i>
-                </span>
-              </button>
-            </div>
-              <!-- <input type="submit" class="search-btn" value="Search" /> -->
-            
-          
+        <div class="search-container">         
+          <div class="search-fields">
+            <input type="text" class="search-box" placeholder="Search" name="q" style="position: relative;" value="{{ search.terms | escape }}" />
+            <button type="submit" class="search-btn" style="position: absolute; top: 12px; right: 3px;">
+              <span style="font-size: 1.8rem; color: grey;">
+                <i class="bi bi-search"></i>
+              </span>
+            </button>
+          </div>
+          <!-- <input type="submit" class="search-btn" value="Search" /> -->
         </div>
       </div>
     </form>
@@ -40,10 +37,24 @@
   }
 
   .search-fields{
+    width: 100%;
     position: absolute;
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
+  }
+
+  input.search-box{
+    width: 100%;
+    padding: .6em 0 .6em 0;
+    border: none;
+    border-bottom: solid 1px grey;
+    font-size: 1.8rem;
+  }
+
+  .search-fields input::placeholder{
+    font-size: 2rem;
+    letter-spacing: .1em;
   }
 
 {% endstyle %}
