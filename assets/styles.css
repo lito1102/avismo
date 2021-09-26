@@ -1782,10 +1782,6 @@
 	line-height: 1.8;
 }
 .megamenu__collection-img {
-	background-image: url(https://images.unsplash.com/photo-1558882293-3ca7185a787c?auto=format&fit=crop&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1732);
-	background-position: top;
-	background-size: cover;
-	height: 0;
 	padding-bottom: 50%;
 }
 .megamenu__img-wrapper {
@@ -2004,7 +2000,7 @@ form {
 }
 .paragraph__text {
 	font-size: 1.5rem;
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.1em;
 	color: var(--heading-color);
 }

@@ -7,7 +7,7 @@
         <img
           srcset="{{ section.settings.footer_logo | img_url: image_size }} 1x, {{ section.settings.footer_logo | img_url: image_size, scale: 2 }} 2x"
           src="{{ section.settings.footer_logo | img_url: image_size }}" loading="lazy"
-          width="{{ section.settings.footer_logo.width }}" height="{{ section.settings.footer_logo.height }}"
+          width="{{ section.settings.footer_logo.width }}"
           alt="{{ section.settings.footer_logo.alt | default: shop.name | escape }}">
         {%- else -%}
         <h1 class="header1__nav-logo">

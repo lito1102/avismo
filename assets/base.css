@@ -1639,9 +1639,11 @@ input[type='checkbox'] {
 
 .announcement-bar__message {
 	text-align: center;
-	padding: 1rem 2rem;
+	padding: 0.8rem 2rem;
 	margin: 0;
-	letter-spacing: 0.1rem;
+	letter-spacing: 0.1em;
+	font-size: 1.4rem;
+	font-weight: 400;
 }
 
 /* section-header */
