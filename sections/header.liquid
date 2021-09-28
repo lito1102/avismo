@@ -369,23 +369,41 @@
                           <div class="page-width">
                             <div class="container">
                               <div class="row">
-                                {% for childlink in link.links %}
-                                  <a href="#" class="megamenu__collection-img"></a>
+                                
+                                  {%- for block in section.blocks -%}
                                   <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <a href="#" class="megamenu__collection-img">
+                                      {%- if block.settings.mega_menu_image != blank -%}
+                                        <img
+                                          srcset="{%- if block.settings.mega_menu_image.width >= 165 -%}{{ block.settings.mega_menu_image | img_url: '165x' }} 165w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 360 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 360w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 535 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 535w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 750 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 750w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2000 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 2000w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2040 -%}{{ block.settings.mega_menu_image | img_url: '2040x' }} 2040w,{%- endif -%}"
+                                          src="{{ block.settings.mega_menu_image | img_url: 'master' }}"
+                                          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                          alt="{{ section.settings.image.alt | escape }}" loading="lazy"
+                                          width="{{ section.settings.image.width }}">
+                                      {%- else -%}
+                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                      {%- endif -%}
+                                    </a>
                                     <h5 class="megamenu__collection-heading py-3">
-                                      <a href="#">{{ childlink.title }}</a>
+                                      <a href="#">{{ block.settings.mega_menu_column_heading }}</a>
                                     </h5>
                                     <ul class="megamenu__list text-left nav-dropdown__list">
-                                      {% for grandchildlink in childlink.links %}
+                                      {%- for link in block.settings.mega_menu_links.links -%}
                                         <li class="nav-dropdown__list-item">
-                                          <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                            {{ grandchildlink.title }}
+                                          <a href="{{ link.url }}" class="nav-dropdown__link">
+                                            {{ link.title }}
                                           </a>
                                         </li>
-                                      {%endfor%}
+                                      {%- endfor -%}
                                     </ul>
                                   </div>
-                                {% endfor %}
+                                  {%- endfor -%}
+                                
                               </div>
                             </div>
                           </div>
@@ -423,9 +441,9 @@
             <nav class="header2__nav-right">
               <ul class="header2__nav-right-list d-flex align-items-center">
                 <li class="header2__nav-right-list-item">
-                  <a href="" class="header2__nav-right-link-controls">
-                    <span class="header2__nav-right-search"><i class="bi bi-search"></i></span>
-                  </a>
+                  <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                  </button>
                 </li>
                 <li class="header2__nav-right-list-item">
                   {%- if shop.customer_accounts_enabled -%}
@@ -594,23 +612,41 @@
                           <div class="page-width">
                             <div class="container">
                               <div class="row">
-                                {% for childlink in link.links %}
-                                  <a href="#" class="megamenu__collection-img"></a>
+                                
+                                  {%- for block in section.blocks -%}
                                   <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <a href="#" class="megamenu__collection-img">
+                                      {%- if block.settings.mega_menu_image != blank -%}
+                                        <img
+                                          srcset="{%- if block.settings.mega_menu_image.width >= 165 -%}{{ block.settings.mega_menu_image | img_url: '165x' }} 165w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 360 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 360w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 535 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 535w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 750 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 750w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2000 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 2000w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2040 -%}{{ block.settings.mega_menu_image | img_url: '2040x' }} 2040w,{%- endif -%}"
+                                          src="{{ block.settings.mega_menu_image | img_url: 'master' }}"
+                                          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                          alt="{{ section.settings.image.alt | escape }}" loading="lazy"
+                                          width="{{ section.settings.image.width }}">
+                                      {%- else -%}
+                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                      {%- endif -%}
+                                    </a>
                                     <h5 class="megamenu__collection-heading py-3">
-                                      <a href="#">{{ childlink.title }}</a>
+                                      <a href="#">{{ block.settings.mega_menu_column_heading }}</a>
                                     </h5>
                                     <ul class="megamenu__list text-left nav-dropdown__list">
-                                      {% for grandchildlink in childlink.links %}
+                                      {%- for link in block.settings.mega_menu_links.links -%}
                                         <li class="nav-dropdown__list-item">
-                                          <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                            {{ grandchildlink.title }}
+                                          <a href="{{ link.url }}" class="nav-dropdown__link">
+                                            {{ link.title }}
                                           </a>
                                         </li>
-                                      {%endfor%}
+                                      {%- endfor -%}
                                     </ul>
                                   </div>
-                                {% endfor %}
+                                  {%- endfor -%}
+                                
                               </div>
                             </div>
                           </div>
@@ -642,10 +678,10 @@
                   {%- endfor -%}
                 {%- endif -%}
                 <li class="header3__nav-right-list-item">
-                  <a href="" class="header3__nav-right-link-controls">
-                    <span class="header3__nav-right-search"><i class="bi bi-search"></i></span>
-                    </a>
-                  </li>
+                  <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                  </button>
+                </li>
                 <li class="header3__nav-right-list-item">
                   {%- if shop.customer_accounts_enabled -%}
                     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -800,10 +836,10 @@
           </div>
           <div class="col col-sm-12 col-md-12 col-lg12">
             <div class="header4__nav-logo-center-wrapper">
-              <ul class="header4__right-controls d-flex align-content-center justify-content-end">
+              <ul class="header4__right-controls d-flex align-items-center justify-content-end">
                 <li class="header4__nav-right-list-item">
                   <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <span class="header4__nav-right-search"><i class="bi bi-search"></i></span>
+                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
                   </button>
                 </li>
                 <li class="header4__nav-right-list-item">
@@ -860,23 +896,41 @@
                           <div class="page-width">
                             <div class="container">
                               <div class="row">
-                                {% for childlink in link.links %}
-                                <a href="#" class="megamenu__collection-img"></a>
-                                <div class="col-sm-3 col-md-3 col-lg-3">
-                                  <h5 class="megamenu__collection-heading py-3">
-                                    <a href="#">{{ childlink.title }}</a>
-                                  </h5>
-                                  <ul class="megamenu__list text-left nav-dropdown__list">
-                                    {% for grandchildlink in childlink.links %}
-                                    <li class="nav-dropdown__list-item">
-                                      <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                        {{ grandchildlink.title }}
-                                      </a>
-                                    </li>
-                                    {%endfor%}
-                                  </ul>
-                                </div>
-                                {% endfor %}
+                                
+                                  {%- for block in section.blocks -%}
+                                  <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <a href="#" class="megamenu__collection-img">
+                                      {%- if block.settings.mega_menu_image != blank -%}
+                                        <img
+                                          srcset="{%- if block.settings.mega_menu_image.width >= 165 -%}{{ block.settings.mega_menu_image | img_url: '165x' }} 165w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 360 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 360w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 535 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 535w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 750 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 750w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2000 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 2000w,{%- endif -%}
+                                          {%- if block.settings.mega_menu_image.width >= 2040 -%}{{ block.settings.mega_menu_image | img_url: '2040x' }} 2040w,{%- endif -%}"
+                                          src="{{ block.settings.mega_menu_image | img_url: 'master' }}"
+                                          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                          alt="{{ section.settings.image.alt | escape }}" loading="lazy"
+                                          width="{{ section.settings.image.width }}">
+                                      {%- else -%}
+                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                      {%- endif -%}
+                                    </a>
+                                    <h5 class="megamenu__collection-heading py-3">
+                                      <a href="#">{{ block.settings.mega_menu_column_heading }}</a>
+                                    </h5>
+                                    <ul class="megamenu__list text-left nav-dropdown__list">
+                                      {%- for link in block.settings.mega_menu_links.links -%}
+                                        <li class="nav-dropdown__list-item">
+                                          <a href="{{ link.url }}" class="nav-dropdown__link">
+                                            {{ link.title }}
+                                          </a>
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  </div>
+                                  {%- endfor -%}
+                                
                               </div>
                             </div>
                           </div>
@@ -985,274 +1039,6 @@
   {%- if request.page_type != 'cart' -%}
     {%- render 'cart-notification' -%}
   {%- endif -%}
-  
-  <!-- *****======HEADER STYLE 5 ======****** -->
-  {% when 'header5' %}
-
-  <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print"
-    onload="this.media='all'">
-  
-  <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
-  
-  <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
-
-  {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
-  <header class="header header5" style="background-color: {{ section.settings.header_background_color | color_modify: 'alpha', opacity }};">
-    <div class="header5__wrapper py-3">
-      <div class="container">
-        <div class="row mx-auto">
-          <div class="col-4 col-md-3 d-flex align-items-center justify-content-start">
-            <ul>
-              <li class="header5__nav-right-list-item">
-                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                  <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
-                </button>
-              </li>
-            </ul>
-          </div>
-          <div class="col-4 col-md-6 d-flex align-items-center justify-content-center">
-            <nav class="header5__nav-left">
-              <ul class="header5__nav-left-list d-flex align-items-center">
-                {%- if section.settings.menu != blank -%}
-                  {%- for link in section.settings.menu.links -%}
-                    {%- if settings.mega_title == link.title -%}
-                      <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU LEFT SIDE -->
-                      <li class="header5__nav-left-list-item header5__has-dropdown site-nav--is-megamenu">
-                        <a href="" class="header5__nav-left-link header5__nav--link-has-dropdown">
-                          {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
-                        </a>
-                        <!-- Megamenu START -->
-                        <div class="nav-dropdown text-left megamenu">
-                          <div class="page-width">
-                            <div class="container">
-                              <div class="row">
-                                {% for childlink in link.links %}
-                                  <a href="#" class="megamenu__collection-img"></a>
-                                  <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <h5 class="megamenu__collection-heading py-3">
-                                      <a href="#">{{ childlink.title }}</a>
-                                    </h5>
-                                    <ul class="megamenu__list text-left nav-dropdown__list">
-                                      {% for grandchildlink in childlink.links %}
-                                        <li class="nav-dropdown__list-item">
-                                          <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                            {{ grandchildlink.title }}
-                                          </a>
-                                        </li>
-                                      {%endfor%}
-                                    </ul>
-                                  </div>
-                                {% endfor %}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Megamenu END -->
-                      </li>
-
-                    {%- elsif link.links != blank -%}
-                      <!-- REGULAR LINK WITH A DROPDOWN MENU LEFT SIDE -->
-                      <li class="header5__nav-left-list-item header5__has-dropdown">
-                        <a href="" class="header5__nav-left-link header5__nav--link-has-dropdown">
-                          {{ link.title | escape }} <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
-                        </a>
-                        <!-- Dropdown Menu START -->
-                        <ul class="nav-dropdown text-left nav-dropdown__list">
-                          {% for childlink in link.links %}
-                            <li class="nav-dropdown__list-item">
-                              <a href="{{ childlink.url }}" class="nav-dropdown__link">{{ childlink.title | escape }}</a>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                        <!-- Dropdown Menu END -->
-                      </li>
-                    {%- else -%}
-                      <!-- REGULAR LINK -->
-                      <li class="header5__nav-left-list-item">
-                        <a href="{{ link.url }}" class="header5__nav-left-link">
-                          {{ link.title | escape }}
-                        </a>
-                      </li>
-
-                    {% endif %} 
-                  {%- endfor -%}
-                {%- endif -%}
-              </ul>
-            </nav>
-            <div class="header5__nav-logo-center-wrapper">
-              <a href="/">
-                {%- if section.settings.logo != blank -%}
-                {%- assign image_size = section.settings.logo_width | append: 'x' -%}
-                <img
-                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                  src="{{ section.settings.logo | img_url: image_size }}" loading="lazy" class="header__heading-logo"
-                  width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
-                  alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
-                {%- else -%}
-                <h1 class="header1__nav-logo">
-                  {{ shop.name }}
-                </h1>
-                {%- endif -%}
-              </a>
-            </div>
-            <nav class="header5__nav-right">
-              <ul class="header5__nav-right-list d-flex align-items-center">
-                {%- if section.settings.menu_2 != blank -%}
-                  {%- for link in section.settings.menu_2.links -%}
-                    {% if settings.mega_title == link.title %}
-                      <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU RIGHT SIDE -->
-                      <li class="header5__nav-right-list-item header5__has-dropdown site-nav--is-megamenu">
-                        <a href="" class="header5__nav-right-link header5__nav--link-has-dropdown">
-                          {{ link.title }}
-                        </a>
-                        <!-- Megamenu START -->
-                        <div class="nav-dropdown text-left megamenu">
-                          <div class="page-width">
-                            <div class="container">
-                              <div class="row">
-                                {% for childlink in link.links %}
-                                <div class="col-sm-3 col-md-3 col-lg-3">
-                                  <h5 class="megamenu__collection-heading py-3">
-                                    <a href="#">{{ childlink.title }}</a>
-                                  </h5>
-                                  <ul class="megamenu__list text-left nav-dropdown__list">
-                                    {% for grandchildlink in childlink.links %}
-                                    <li class="nav-dropdown__list-item">
-                                      <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                        {{ grandchildlink.title }}
-                                      </a>
-                                    </li>
-                                    {%endfor%}
-                                  </ul>
-                                </div>
-                                {% endfor %}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Megamenu END -->
-                      </li>
-                    {% elsif link.links != blank %}
-                      <!-- REGULAR LINK WITH A DROPDOWN MENU RIGHT SIDE -->
-                      <li class="header5__nav-right-list-item header5__has-dropdown">
-                        <a href="" class="header5__nav-right-link header5__nav--link-has-dropdown">
-                          {{ link.title }} <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
-                        </a>
-                        <!-- Dropdown Menu START -->
-                        <ul class="nav-dropdown text-left nav-dropdown__list">
-                          {% for childlink in link.links %}
-                          <li class="nav-dropdown__list-item">
-                            <a href="{{ childlink.url }}" class="nav-dropdown__link">{{ childlink.title }}</a>
-                          </li>
-                          {% endfor %}
-                        </ul>
-                        <!-- Dropdown Menu END -->
-                      </li>
-                    {% else %}
-                      <!-- REGULAR LINK -->
-                      <li class="header5__nav-right-list-item">
-                        <a href="{{ link.url }}" class="header5__nav-right-link">
-                          {{ link.title }}
-                        </a>
-                      </li>
-                    {% endif %}
-                  {%- endfor -%}
-                {%- endif -%}
-              </ul>
-            </nav>
-          </div>
-          <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
-            <ul class="d-flex align-items-center justify-content-end">
-              <li class="header5__nav-right-list-item">
-                <a href="" class="header5__nav-right-link-controls">
-                  <span class="header5__nav-right-user"><i class="bi bi-person"></i></span>
-                </a>
-              </li>
-              <li class="header5__nav-right-list-item">
-                <a href="" class="header5__nav-right-link-controls">
-                  <span class="header5__nav-right-bag"><i class="bi bi-bag"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE MENU -->
-    <div class="header5__mobile-nav-wrapper">
-      <nav class="nav nav1 nav-m1 position">
-        <div class="container">
-          <div class="row d-flex align-items-center justify-content-space-between mobile-content">
-            <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
-                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
-            </div>
-            <div class="col col-sm-4">
-              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
-                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
-                </a></div>
-            </div>
-            <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
-                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
-            </div>
-          </div>
-        </div>
-        <div class="nav-m1__content-wrapper">
-          <div class="container">
-            <nav class="nav-m1__main-nav">
-              <ul class="nav-m1__main-nav-list">
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  {%- if request.page_type != 'cart' -%}
-    {%- render 'cart-notification' -%}
-  {%- endif -%}
 
 {% endcase %}
 
@@ -1280,10 +1066,6 @@
       {
         "value": "header4",
         "label": "Header style 4"
-      },
-      {
-        "value": "header5",
-        "label": "Header style 5"
       }
     ],
     "default": "header1"
