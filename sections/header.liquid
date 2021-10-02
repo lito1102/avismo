@@ -23,7 +23,7 @@
                     {%- if settings.mega_title == link.title -%}
                       <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU LEFT SIDE -->
                       <li class="header1__nav-left-list-item header1__has-dropdown site-nav--is-megamenu">
-                        <a href="" class="header1__nav-left-link header1__nav--link-has-dropdown">
+                        <a href="/" class="header1__nav-left-link header1__nav--link-has-dropdown">
                           {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Megamenu START -->
@@ -34,7 +34,7 @@
                                 
                                   {%- for block in section.blocks -%}
                                   <div class="col-sm-3 col-md-3 col-lg-3">
-                                    <a href="#" class="megamenu__collection-img">
+                                    <a href="{{ block.settings.mega_menu_img_link }}" class="megamenu__collection-img">
                                       {%- if block.settings.mega_menu_image != blank -%}
                                         <img
                                           srcset="{%- if block.settings.mega_menu_image.width >= 165 -%}{{ block.settings.mega_menu_image | img_url: '165x' }} 165w,{%- endif -%}
@@ -52,7 +52,7 @@
                                       {%- endif -%}
                                     </a>
                                     <h5 class="megamenu__collection-heading py-3">
-                                      <a href="#">{{ block.settings.mega_menu_column_heading }}</a>
+                                      <a href="{{ block.settings.mega_menu_heading_link }}">{{ block.settings.mega_menu_column_heading }}</a>
                                     </h5>
                                     <ul class="megamenu__list text-left nav-dropdown__list">
                                       {%- for link in block.settings.mega_menu_links.links -%}
@@ -126,35 +126,54 @@
           <div class="col-4 colmd-4 d-flex align-items-center justify-content-end">
             <nav class="header1__nav-right">
               <ul class="header1__nav-right-list d-flex align-items-center">
-                {%- if section.settings.menu_2 != blank -%}
+                {%- if section.settings.menu != blank -%}
                   {%- for link in section.settings.menu_2.links -%}
                     {% if settings.mega_title == link.title %}
                       <!-- REGULAR LINK WITH A DROPDOWN MEGAMENU RIGHT SIDE -->
-                      <li class="header1__nav-right-list-item header1__has-dropdown site-nav--is-megamenu">
-                        <a href="" class="header1__nav-right-link header1__nav--link-has-dropdown">
-                          {{ link.title }}
+                      <li class="header1__nav-left-list-item header1__has-dropdown site-nav--is-megamenu">
+                        <a href="" class="header1__nav-left-link header1__nav--link-has-dropdown">
+                          {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Megamenu START -->
                         <div class="nav-dropdown text-left megamenu">
                           <div class="page-width">
                             <div class="container">
                               <div class="row">
-                                {% for childlink in link.links %}
-                                <div class="col-sm-3 col-md-3 col-lg-3">
-                                  <h5 class="megamenu__collection-heading py-3">
-                                    <a href="#">{{ childlink.title }}</a>
-                                  </h5>
-                                  <ul class="megamenu__list text-left nav-dropdown__list">
-                                    {% for grandchildlink in childlink.links %}
-                                    <li class="nav-dropdown__list-item">
-                                      <a href="{{ grandchildlink.url }}" class="nav-dropdown__link">
-                                        {{ grandchildlink.title }}
+                                
+                                  {%- for block in section.blocks -%}
+                                    <div class="col-sm-3 col-md-3 col-lg-3">
+                                      <a href="#" class="megamenu__collection-img">
+                                        {%- if block.settings.mega_menu_image != blank -%}
+                                          <img
+                                            srcset="{%- if block.settings.mega_menu_image.width >= 165 -%}{{ block.settings.mega_menu_image | img_url: '165x' }} 165w,{%- endif -%}
+                                            {%- if block.settings.mega_menu_image.width >= 360 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 360w,{%- endif -%}
+                                            {%- if block.settings.mega_menu_image.width >= 535 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 535w,{%- endif -%}
+                                            {%- if block.settings.mega_menu_image.width >= 750 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 750w,{%- endif -%}
+                                            {%- if block.settings.mega_menu_image.width >= 2000 -%}{{ block.settings.mega_menu_image | img_url: 'master' }} 2000w,{%- endif -%}
+                                            {%- if block.settings.mega_menu_image.width >= 2040 -%}{{ block.settings.mega_menu_image | img_url: '2040x' }} 2040w,{%- endif -%}"
+                                            src="{{ block.settings.mega_menu_image | img_url: 'master' }}"
+                                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                            alt="{{ section.settings.image.alt | escape }}" loading="lazy"
+                                            width="{{ section.settings.image.width }}">
+                                        {%- else -%}
+                                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        {%- endif -%}
                                       </a>
-                                    </li>
-                                    {%endfor%}
-                                  </ul>
-                                </div>
-                                {% endfor %}
+                                      <h5 class="megamenu__collection-heading py-3">
+                                        <a href="#">{{ block.settings.mega_menu_column_heading }}</a>
+                                      </h5>
+                                      <ul class="megamenu__list text-left nav-dropdown__list">
+                                        {%- for link in block.settings.mega_menu_links.links -%}
+                                          <li class="nav-dropdown__list-item">
+                                            <a href="{{ link.url }}" class="nav-dropdown__link">
+                                              {{ link.title }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  {%- endfor -%}
+                                
                               </div>
                             </div>
                           </div>
@@ -1126,10 +1145,20 @@
 
         },
         {
+          "type": "url",
+          "id": "mega_menu_img_link",
+          "label": "Image link"
+        },
+        {
           "type": "text",
           "id": "mega_menu_column_heading",
           "label": "Mega menu column heading",
           "default": "Heading"
+        },
+        {
+        "type": "url",
+        "id": "mega_menu_heading_link",
+        "label": "Heading link"
         },
         {
           "type": "link_list",
