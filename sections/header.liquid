@@ -250,10 +250,7 @@
                     </div>
                     {%- endif -%}
                   </a>
-
-
-                </li>
-                
+                </li> 
               </ul>
             </nav>
           </div>
@@ -267,8 +264,9 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-space-between mobile-content">
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
-                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end">
+                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button>
+              </div>
             </div>
             <div class="col col-sm-4">
               <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
@@ -276,17 +274,43 @@
                 </a></div>
             </div>
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end">
-                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+              <div class="nav-m1__nav-right-wrapper align-items-center d-flex justify-content-evenly text-end">
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="padding-top: 3px; padding-right: 4px;">
                   <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
                 </button>
-                <a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a>
+                <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset" style="padding-top: 4px;"
+                    id="cart-icon-bubble">
+                    {%- liquid
+                    if cart == empty
+                    render 'icon-cart'
+                    else
+                    render 'icon-cart'
+                    endif
+                    -%}
+                    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                    {%- if cart != empty -%}
+                    <div class="cart-count-bubble">
+                      {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                        {%- endif -%}
+                        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                    </div>
+                    {%- endif -%}
+                  </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="nav-m1__content-wrapper">
+        <div class="nav-m1__content-wrapper" id="showMobileMenu">
           <div class="container">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <button id="closeNav" style="padding: 2rem;">
+                  <span class="close-btn" style="font-size: 30px;">
+                    <i class="bi bi-x-circle"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
             <nav class="nav-m1__main-nav">
               <ul class="nav-m1__main-nav-list">
                 <li class="nav-m1__main-nav-list-item d-down"><button type="button"
@@ -1060,6 +1084,22 @@
   {%- endif -%}
 
 {% endcase %}
+
+{% javascript %}
+
+  const openNav = document.getElementById('openNav');
+  const showMobileMenu = document.getElementById('showMobileMenu');
+  const closeBtn = document.getElementById('closeNav');
+
+  openNav.addEventListener('click', () => {
+    showMobileMenu.classList.add('show-mobile-menu')
+  });
+
+  closeBtn.addEventListener('click', () => {
+    showMobileMenu.classList.remove('show-mobile-menu');
+  });
+
+{% endjavascript %}
 
 {% schema %}
 {
