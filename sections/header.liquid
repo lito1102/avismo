@@ -96,7 +96,6 @@
                           {{ link.title | escape }}
                         </a>
                       </li>
-
                     {% endif %} 
                   {%- endfor -%}
                 {%- endif -%}
@@ -264,37 +263,52 @@
           <div class="row d-flex align-items-center justify-content-space-between mobile-content">
             <div class="col-3 col-sm-4">
               <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end">
-                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button>
+                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn">
+                  <i class="bi bi-list"></i>
+                </button>
               </div>
             </div>
             <div class="col col-sm-4">
-              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
-                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
-                </a></div>
+              <div class="nav-m1__logo-wrapper text-center my-auto">
+                <a href="/">
+                  {%- if section.settings.mobile_logo != blank -%}
+                    {%- assign mobile_image_size = section.settings.mobile_logo_width | append: 'x' -%}
+                    <img
+                      srcset="{{ section.settings.mobile_logo | img_url: mobile_image_size }} 1x, {{ section.settings.mobile_logo | img_url: mobile_image_size, scale: 2 }} 2x"
+                      src="{{ section.settings.mobile_logo | img_url: image_size }}" loading="lazy" class="nav-m1__logo-link"
+                      width="{{ section.settings.mobile_logo.width }}"
+                      alt="{{ section.settings.mobile_logo.alt | default: shop.name | escape }}">
+                    {%- else -%}
+                    <h1 class="nav-m1__logo">
+                      {{ shop.name }}
+                    </h1>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper align-items-center d-flex justify-content-evenly text-end">
+              <div class="nav-m1__nav-right-wrapper align-items-center d-flex justify-content-evenly">
                 <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="padding-top: 3px; padding-right: 4px;">
                   <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
                 </button>
                 <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset" style="padding-top: 4px;"
-                    id="cart-icon-bubble">
-                    {%- liquid
-                    if cart == empty
-                    render 'icon-cart'
-                    else
-                    render 'icon-cart'
-                    endif
-                    -%}
-                    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-                    {%- if cart != empty -%}
-                    <div class="cart-count-bubble">
-                      {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
-                        {%- endif -%}
-                        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-                    </div>
-                    {%- endif -%}
-                  </a>
+                  id="cart-icon-bubble">
+                  {%- liquid
+                  if cart == empty
+                  render 'icon-cart'
+                  else
+                  render 'icon-cart'
+                  endif
+                  -%}
+                  <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                  {%- if cart != empty -%}
+                  <div class="cart-count-bubble">
+                    {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                      <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                  {%- endif -%}
+                </a>
               </div>
             </div>
           </div>
@@ -316,50 +330,33 @@
 
         <nav class="nav-m1__main-nav">
           <ul class="nav-m1__main-nav-list">
-            <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                class="heder-m1__main-nav-link d-down-btn">
-                <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-              </button>
-              <nav class="drop-down">
-                <ul class="drop-down__list">
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                </ul>
-              </nav>
-            </li>
-            <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                class="heder-m1__main-nav-link d-down-btn">
-                <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-              </button>
-              <nav class="drop-down">
-                <ul class="drop-down__list">
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                </ul>
-              </nav>
-            </li>
-            <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                class="heder-m1__main-nav-link d-down-btn">
-                <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-              </button>
-              <nav class="drop-down">
-                <ul class="drop-down__list">
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                  <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                </ul>
-              </nav>
-            </li>
-            <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
+            {%- if section.settings.menu != blank -%}
+              {%- for link in section.settings.mobile_menu.links -%}
+                {%- if link.links != blank -%}
+                  <li class="nav-m1__main-nav-list-item d-down">
+                    <button type="button" class="heder-m1__main-nav-link d-down-btn">
+                      <p>{{ link.title }}</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                    </button>
+                    <nav class="drop-down">
+                      <ul class="drop-down__list">
+                        {% for childlink in link.links %}
+                          <li class="drop-down__list-item"><a href="{{ childlink.url }}" class="drop-down__link">{{ childlink.title | escape }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </nav>
+                  </li>
+                  {%- else -%}
+                    <li class="nav-m1__main-nav-list-item">
+                      <a href="{{ link.url }}" class="heder-m1__main-nav-link">{{ link.title }}</a>
+                    </li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
           </ul>
         </nav>
 
       </div>     
     </div>
-
-
     <!-- Mobile Ends -->
   </header>
   {%- if request.page_type != 'cart' -%}
@@ -541,67 +538,103 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-space-between mobile-content">
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
-                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end">
+                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn">
+                  <i class="bi bi-list"></i>
+                </button>
+              </div>
             </div>
             <div class="col col-sm-4">
-              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
-                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
-                </a></div>
+              <div class="nav-m1__logo-wrapper text-center my-auto">
+                <a href="/">
+                  {%- if section.settings.mobile_logo != blank -%}
+                  {%- assign mobile_image_size = section.settings.mobile_logo_width | append: 'x' -%}
+                    <img
+                      srcset="{{ section.settings.mobile_logo | img_url: mobile_image_size }} 1x, {{ section.settings.mobile_logo | img_url: mobile_image_size, scale: 2 }} 2x"
+                      src="{{ section.settings.mobile_logo | img_url: image_size }}" loading="lazy" class="nav-m1__logo-link"
+                      width="{{ section.settings.mobile_logo.width }}"
+                      alt="{{ section.settings.mobile_logo.alt | default: shop.name | escape }}"
+                    >
+                  {%- else -%}
+                    <h1 class="nav-m1__logo">
+                      {{ shop.name }}
+                    </h1>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
-                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
+              <div class="nav-m1__nav-right-wrapper d-flex align-items-center justify-content-evenly">
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"
+                  style="padding-top: 3px; padding-right: 4px;">
+                  <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                </button>
+
+                <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset"
+                  style="padding-top: 4px;" id="cart-icon-bubble">
+                  {%- liquid
+                  if cart == empty
+                  render 'icon-cart'
+                  else
+                  render 'icon-cart'
+                  endif
+                  -%}
+                  <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                  {%- if cart != empty -%}
+                    <div class="cart-count-bubble">
+                      {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                        {%- endif -%}
+                        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                    </div>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="nav-m1__content-wrapper">
-          <div class="container">
-            <nav class="nav-m1__main-nav">
-              <ul class="nav-m1__main-nav-list">
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
-              </ul>
-            </nav>
           </div>
         </div>
       </nav>
+    </div>
+
+    <div class="nav-m1__content-wrapper" id="showMobileMenu">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <button id="closeNav" style="padding: 1.4rem;">
+              <span class="close-btn" style="font-size: 30px;">
+                <i class="bi bi-x-circle"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+    
+        <nav class="nav-m1__main-nav">
+          <ul class="nav-m1__main-nav-list">
+            {%- if section.settings.menu != blank -%}
+              {%- for link in section.settings.mobile_menu.links -%}
+                {%- if link.links != blank -%}
+                <li class="nav-m1__main-nav-list-item d-down">
+                  <button type="button" class="heder-m1__main-nav-link d-down-btn">
+                    <p>{{ link.title }}</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      {% for childlink in link.links %}
+                      <li class="drop-down__list-item"><a href="{{ childlink.url }}" class="drop-down__link">{{ childlink.title
+                          | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                </li>
+                {%- else -%}
+                <li class="nav-m1__main-nav-list-item">
+                  <a href="{{ link.url }}" class="heder-m1__main-nav-link">{{ link.title }}</a>
+                </li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   {%- if request.page_type != 'cart' -%}
@@ -645,7 +678,6 @@
           <div class="col-6 col-md-6 d-flex align-items-center justify-content-end">
             <nav class="header3__nav-left">
               <ul class="header3__nav-left-list d-flex align-items-center justify-content-center">
-
                 {%- if section.settings.menu != blank -%}
                   {%- for link in section.settings.menu.links -%}
                     {%- if settings.mega_title == link.title -%}
@@ -778,67 +810,101 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-space-between mobile-content">
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
-                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end">
+                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn">
+                  <i class="bi bi-list"></i>
+                </button>
+              </div>
             </div>
             <div class="col col-sm-4">
-              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
-                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
-                </a></div>
+              <div class="nav-m1__logo-wrapper text-center my-auto">
+                <a href="/">
+                  {%- if section.settings.mobile_logo != blank -%}
+                  {%- assign mobile_image_size = section.settings.mobile_logo_width | append: 'x' -%}
+                  <img
+                    srcset="{{ section.settings.mobile_logo | img_url: mobile_image_size }} 1x, {{ section.settings.mobile_logo | img_url: mobile_image_size, scale: 2 }} 2x"
+                    src="{{ section.settings.mobile_logo | img_url: image_size }}" loading="lazy" class="nav-m1__logo-link"
+                    width="{{ section.settings.mobile_logo.width }}"
+                    alt="{{ section.settings.mobile_logo.alt | default: shop.name | escape }}">
+                  {%- else -%}
+                  <h1 class="nav-m1__logo">
+                    {{ shop.name }}
+                  </h1>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
-                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
+              <div class="nav-m1__nav-right-wrapper d-flex align-items-center justify-content-evenly">
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"
+                  style="padding-top: 3px; padding-right: 4px;">
+                  <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                </button>
+                <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset"
+                  style="padding-top: 4px;" id="cart-icon-bubble">
+                  {%- liquid
+                  if cart == empty
+                  render 'icon-cart'
+                  else
+                  render 'icon-cart'
+                  endif
+                  -%}
+                  <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                  {%- if cart != empty -%}
+                  <div class="cart-count-bubble">
+                    {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                      <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="nav-m1__content-wrapper">
-          <div class="container">
-            <nav class="nav-m1__main-nav">
-              <ul class="nav-m1__main-nav-list">
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
-              </ul>
-            </nav>
           </div>
         </div>
       </nav>
+    </div>
+
+    <div class="nav-m1__content-wrapper" id="showMobileMenu">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <button id="closeNav" style="padding: 1.4rem;">
+              <span class="close-btn" style="font-size: 30px;">
+                <i class="bi bi-x-circle"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+    
+        <nav class="nav-m1__main-nav">
+          <ul class="nav-m1__main-nav-list">
+            {%- if section.settings.menu != blank -%}
+              {%- for link in section.settings.mobile_menu.links -%}
+                {%- if link.links != blank -%}
+                <li class="nav-m1__main-nav-list-item d-down">
+                  <button type="button" class="heder-m1__main-nav-link d-down-btn">
+                    <p>{{ link.title }}</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      {% for childlink in link.links %}
+                      <li class="drop-down__list-item"><a href="{{ childlink.url }}" class="drop-down__link">{{ childlink.title
+                          | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                </li>
+                {%- else -%}
+                <li class="nav-m1__main-nav-list-item">
+                  <a href="{{ link.url }}" class="heder-m1__main-nav-link">{{ link.title }}</a>
+                </li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   {%- if request.page_type != 'cart' -%}
@@ -1019,67 +1085,101 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-space-between mobile-content">
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end"><button type="button"
-                  class="nav-m1__mobile-menu-btn"><i class="bi bi-list"></i></button></div>
+              <div class="nav-m1__nav-left-wrapper d-flex justify-content-start text-end">
+                <button id="openNav" type="button" class="nav-m1__mobile-menu-btn">
+                  <i class="bi bi-list"></i>
+                </button>
+              </div>
             </div>
             <div class="col col-sm-4">
-              <div class="nav-m1__logo-wrapper text-center my-auto"><a href="#" class="nav-m1__logo-link">
-                  <h1 class="nav-m1__logo">AVISMO</h1><span class="nav-m1__tagline">FASHION</span>
-                </a></div>
+              <div class="nav-m1__logo-wrapper text-center my-auto">
+                <a href="/">
+                  {%- if section.settings.mobile_logo != blank -%}
+                  {%- assign mobile_image_size = section.settings.mobile_logo_width | append: 'x' -%}
+                  <img
+                    srcset="{{ section.settings.mobile_logo | img_url: mobile_image_size }} 1x, {{ section.settings.mobile_logo | img_url: mobile_image_size, scale: 2 }} 2x"
+                    src="{{ section.settings.mobile_logo | img_url: image_size }}" loading="lazy" class="nav-m1__logo-link"
+                    width="{{ section.settings.mobile_logo.width }}"
+                    alt="{{ section.settings.mobile_logo.alt | default: shop.name | escape }}">
+                  {%- else -%}
+                  <h1 class="nav-m1__logo">
+                    {{ shop.name }}
+                  </h1>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
             <div class="col-3 col-sm-4">
-              <div class="nav-m1__nav-right-wrapper d-flex justify-content-end text-end"><a href="#" class="user"><i
-                    class="bi bi-person"></i></a><a href="#" class="shopping-bag"><i class="bi bi-bag"></i></a></div>
+              <div class="nav-m1__nav-right-wrapper d-flex align-items-center justify-content-evenly">
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"
+                  style="padding-top: 3px; padding-right: 4px;">
+                  <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                </button>
+                <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset"
+                  style="padding-top: 4px;" id="cart-icon-bubble">
+                  {%- liquid
+                  if cart == empty
+                  render 'icon-cart'
+                  else
+                  render 'icon-cart'
+                  endif
+                  -%}
+                  <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                  {%- if cart != empty -%}
+                  <div class="cart-count-bubble">
+                    {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                      <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                  {%- endif -%}
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="nav-m1__content-wrapper">
-          <div class="container">
-            <nav class="nav-m1__main-nav">
-              <ul class="nav-m1__main-nav-list">
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>MEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>WOMEN</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item d-down"><button type="button"
-                    class="heder-m1__main-nav-link d-down-btn">
-                    <p>NEW ARRIVALS</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
-                  </button>
-                  <nav class="drop-down">
-                    <ul class="drop-down__list">
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">SHOES</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">APPAREL</a></li>
-                      <li class="drop-down__list-item"><a href="#" class="drop-down__link">ACCESSORIES</a></li>
-                    </ul>
-                  </nav>
-                </li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="heder-m1__main-nav-link">ACCOUNT</a></li>
-                <li class="nav-m1__main-nav-list-item"><a href="#" class="nav-m1__main-nav-link">HELP</a></li>
-              </ul>
-            </nav>
           </div>
         </div>
       </nav>
+    </div>
+
+    <div class="nav-m1__content-wrapper" id="showMobileMenu">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <button id="closeNav" style="padding: 1.4rem;">
+              <span class="close-btn" style="font-size: 30px;">
+                <i class="bi bi-x-circle"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+    
+        <nav class="nav-m1__main-nav">
+          <ul class="nav-m1__main-nav-list">
+            {%- if section.settings.menu != blank -%}
+              {%- for link in section.settings.mobile_menu.links -%}
+                {%- if link.links != blank -%}
+                <li class="nav-m1__main-nav-list-item d-down">
+                  <button type="button" class="heder-m1__main-nav-link d-down-btn">
+                    <p>{{ link.title }}</p><span class="arrow"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <nav class="drop-down">
+                    <ul class="drop-down__list">
+                      {% for childlink in link.links %}
+                      <li class="drop-down__list-item"><a href="{{ childlink.url }}" class="drop-down__link">{{ childlink.title
+                          | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                </li>
+                {%- else -%}
+                <li class="nav-m1__main-nav-list-item">
+                  <a href="{{ link.url }}" class="heder-m1__main-nav-link">{{ link.title }}</a>
+                </li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   {%- if request.page_type != 'cart' -%}
@@ -1176,6 +1276,27 @@
       "id": "menu_2",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile_menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
     }
   ],
   "blocks": [
