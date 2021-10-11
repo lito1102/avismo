@@ -1086,7 +1086,7 @@ deferred-media {
 	border: 0;
 	border-radius: 0;
 	background-color: rgba(var(--color-button), var(--alpha-button-background));
-	box-shadow: 0 0 0 0.1rem rgba(var(--color-button), var(--alpha-button-border));
+	box-shadow: 0 0 0 0.1rem var(--body-color-2);
 	color: rgb(var(--color-button-text));
 	min-width: 12rem;
 	min-height: 4.5rem;
@@ -1132,7 +1132,8 @@ deferred-media {
 .button:not([disabled]):hover,
 .shopify-challenge__button:hover,
 .customer button:hover {
-	box-shadow: 0 0 0 0.2rem rgba(var(--color-button), var(--alpha-button-border));
+	/* box-shadow: 0 0 0 0.2rem rgba(var(--color-button), var(--alpha-button-border)); */
+	box-shadow: 0 0 0 0.1rem var(--body-color-2);
 }
 
 /* Button - other */
