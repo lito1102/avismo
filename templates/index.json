@@ -19,7 +19,7 @@
           "type": "button",
           "settings": {
             "button_label": "SHOP SWIMWEAR",
-            "button_link": ""
+            "button_link": "shopify:\/\/collections\/girls-swimwear"
           }
         }
       },
