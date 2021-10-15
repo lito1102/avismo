@@ -18,7 +18,7 @@
 				"type": "text",
 				"id": "mega_title",
 				"label": "Mega Menu Title",
-				"info": "(Don't want? Keep blank)"
+				"info": "Don't want a megamenu? Leave it blank"
 			}
 		]
 	},
