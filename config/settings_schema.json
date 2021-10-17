@@ -11,10 +11,6 @@
 		"name": "Mega Menu",
 		"settings": [
 			{
-				"type": "header",
-				"content": "Mega Menu Image"
-			},
-			{
 				"type": "text",
 				"id": "mega_title",
 				"label": "Mega Menu Title",
