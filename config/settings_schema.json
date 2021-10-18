@@ -27,6 +27,12 @@
 			},
 			{
 				"type": "color",
+				"id": "header_color_links",
+				"default": "#121212",
+				"label": "Header links"
+			},
+			{
+				"type": "color",
 				"id": "colors_solid_button_labels",
 				"default": "#FFFFFF",
 				"label": "t:settings_schema.colors.settings.colors_solid_button_labels.label",
