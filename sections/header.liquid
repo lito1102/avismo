@@ -2,6 +2,8 @@
   <!-- *****======HEADER STYLE 1 ======****** -->
   {% when 'header1' %}
 
+  {{ 'Header1.css' | asset_url | stylesheet_tag }}
+
   <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
   
   <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
@@ -210,7 +212,7 @@
                 
                 <li class="header1__nav-right-list-item">
                   <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                    <span class="nav-search"><i class="bi bi-search"></i></span>
                   </button>
                 </li>
                 <li class="header1__nav-right-list-item">
@@ -485,7 +487,7 @@
               <ul class="header2__nav-right-list d-flex align-items-center">
                 <li class="header2__nav-right-list-item">
                   <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                    <span class="nav-search"><i class="bi bi-search"></i></span>
                   </button>
                 </li>
                 <li class="header2__nav-right-list-item">
