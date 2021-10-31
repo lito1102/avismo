@@ -688,7 +688,7 @@
                   {%- for link in section.settings.menu.links -%}
                     {%- if settings.mega_title == link.title -%}
                       <li class="header3__nav-left-list-item header3__has-dropdown site-nav--is-megamenu">
-                        <a href="" class="header3__nav-left-link header2__nav--link-has-dropdown">
+                        <a href="" class="header3__nav-left-link header3__nav--link-has-dropdown">
                           {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Megamenu START -->
@@ -739,7 +739,7 @@
                       </li>
                     {%- elsif link.links != blank -%}
                       <li class="header3__nav-left-list-item header3__has-dropdown">
-                        <a href="" class="header3__nav-left-link header2__nav--link-has-dropdown">
+                        <a href="" class="header3__nav-left-link header3__nav--link-has-dropdown">
                           {{ link.title }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
                         <!-- Dropdown Menu START -->
