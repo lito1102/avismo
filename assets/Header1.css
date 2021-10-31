@@ -94,11 +94,11 @@
 .header1__nav-right-link-controls:hover {
 	color: inherit;
 }
-.header1__nav-right-bag,
 .header1__nav-right-user {
 	font-size: 1.8rem;
 }
-.nav-search {
+.nav-search,
+.header-shopping-bag {
 	font-size: 2.2rem;
 }
 .header1__has-dropdown {

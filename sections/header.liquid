@@ -368,6 +368,8 @@
   <!-- *****======HEADER STYLE 2 ======****** -->
   {% when 'header2' %}
 
+  {{ 'Header2.css' | asset_url | stylesheet_tag }}
+
   <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
   
   <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
@@ -646,6 +648,8 @@
   <!-- *****======HEADER STYLE 3 ======****** -->
   {% when 'header3' %}
 
+  {{ 'Header3.css' | asset_url | stylesheet_tag }}
+
   <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
   
   <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
@@ -683,7 +687,7 @@
                 {%- if section.settings.menu != blank -%}
                   {%- for link in section.settings.menu.links -%}
                     {%- if settings.mega_title == link.title -%}
-                      <li class="header3__nav-left-list-item header2__has-dropdown site-nav--is-megamenu">
+                      <li class="header3__nav-left-list-item header3__has-dropdown site-nav--is-megamenu">
                         <a href="" class="header3__nav-left-link header2__nav--link-has-dropdown">
                           {{ link.title | escape }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
@@ -734,7 +738,7 @@
                         <!-- Megamenu END -->
                       </li>
                     {%- elsif link.links != blank -%}
-                      <li class="header3__nav-left-list-item header2__has-dropdown">
+                      <li class="header3__nav-left-list-item header3__has-dropdown">
                         <a href="" class="header3__nav-left-link header2__nav--link-has-dropdown">
                           {{ link.title }} <span className="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
                         </a>
@@ -759,7 +763,7 @@
                 {%- endif -%}
                 <li class="header3__nav-right-list-item">
                   <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                    <span class="nav-search"><i class="bi bi-search"></i></span>
                   </button>
                 </li>
                 <li class="header3__nav-right-list-item">
@@ -915,6 +919,8 @@
   
   <!-- *****======HEADER STYLE 4 ======****** -->
   {% when 'header4' %}
+
+  {{ 'Header4.css' | asset_url | stylesheet_tag }}
   
   <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print"
     onload="this.media='all'">
@@ -953,7 +959,7 @@
               <ul class="header4__right-controls d-flex align-items-center justify-content-end">
                 <li class="header4__nav-right-list-item">
                   <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <span class="header5__nav-right-search"><i class="bi bi-search"></i></span>
+                    <span class="nav-search"><i class="bi bi-search"></i></span>
                   </button>
                 </li>
                 <li class="header4__nav-right-list-item">

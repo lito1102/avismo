@@ -80,11 +80,11 @@
 .header4__nav-right-link-controls:hover {
 	color: inherit;
 }
-.header4__nav-right-bag,
 .header4__nav-right-user {
 	font-size: 1.8rem;
 }
-.nav-search {
+.nav-search,
+.header-shopping-bag {
 	font-size: 2.2rem;
 }
 .header4__has-dropdown {
