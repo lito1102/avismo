@@ -1,0 +1,25 @@
+.gallery1 {
+	padding: 4em 0;
+}
+.gallery1__title {
+	font-size: 2.6rem;
+	font-size: 700;
+	color: var(--heading-color);
+	margin-bottom: 0.6em;
+}
+.gallery1__title--aligned-left {
+	text-align: left;
+}
+.gallery1__title--aligned-center {
+	text-align: center;
+}
+@media (min-width: 375px) {
+	.gallery1__title {
+		font-size: 2.4rem;
+	}
+}
+@media (min-width: 1024px) {
+	.gallery1__title {
+		font-size: 3rem;
+	}
+}

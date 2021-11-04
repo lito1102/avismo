@@ -9,7 +9,6 @@
           <div class="collection2__collection-item">
             {% assign opacity_single_collection = section.settings.opacity_single_collection | divided_by: 100.00 %}
             <div class="collection2__product-img" style="background-color: {{ section.settings.single_collection_bg | color_modify: 'alpha', opacity_single_collection }};">
-              <div class="collection2__heart"><i class="bi bi-heart"></i></div>
               <a href="{{ product.url }}">
                 {%- if product.images[0] != blank -%}
                   <img

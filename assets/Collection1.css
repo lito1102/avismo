@@ -8,25 +8,26 @@
 	margin-bottom: 0.6em;
 }
 .collection1__info {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	display: -moz-box;
 	display: flex;
+	-moz-box-align: center;
 	align-items: center;
+	-moz-box-pack: center;
 	justify-content: center;
 }
 .collection1__info::before {
 	content: '';
+	background-color: rgba(0, 0, 0, 0.2);
+	outline: 2px solid var(--white);
+	outline-offset: -10px;
+}
+.collection1__info,
+.collection1__info:before {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.3);
-	outline: 2px solid var(--white);
-	outline-offset: -10px;
 }
 .collection1__info-content {
 	position: absolute;
