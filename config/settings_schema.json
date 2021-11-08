@@ -34,14 +34,14 @@
 			{
 				"type": "color",
 				"id": "colors_solid_button_labels",
-				"default": "#FFFFFF",
+				"default": "#121212",
 				"label": "t:settings_schema.colors.settings.colors_solid_button_labels.label",
 				"info": "t:settings_schema.colors.settings.colors_solid_button_labels.info"
 			},
 			{
 				"type": "color",
 				"id": "colors_accent_1",
-				"default": "#445958",
+				"default": "#b96f4a",
 				"label": "t:settings_schema.colors.settings.colors_accent_1.label",
 				"info": "t:settings_schema.colors.settings.colors_accent_1.info"
 			},
@@ -92,8 +92,8 @@
 			},
 			{
 				"type": "font_picker",
-				"id": "type_header_font",
-				"default": "sans-serif",
+				"id": "heading_font",
+				"default": "Playfair Display",
 				"label": "t:settings_schema.typography.settings.type_header_font.label",
 				"info": "t:settings_schema.typography.settings.type_header_font.info"
 			},

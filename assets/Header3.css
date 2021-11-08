@@ -23,7 +23,7 @@
 	font-family: var(--body-font);
 	font-size: 1.4rem;
 	font-weight: 500;
-	color: var(--heading-color);
+	color: var(--header_color_links);
 	letter-spacing: 0.1em;
 	position: relative;
 	padding: 10px 15px;
