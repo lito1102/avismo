@@ -20,7 +20,7 @@
 }
 .header1__nav-left-link,
 .header1__nav-right-link {
-	font-family: var(--body-font);
+	font-family: var(--font-body-family);
 	font-size: 1.4rem;
 	font-weight: 500;
 	color: var(--header_color_links);

@@ -92,10 +92,9 @@
 			},
 			{
 				"type": "font_picker",
-				"id": "heading_font",
-				"default": "Playfair Display",
-				"label": "t:settings_schema.typography.settings.type_header_font.label",
-				"info": "t:settings_schema.typography.settings.type_header_font.info"
+				"id": "type_header_font",
+				"default": "sans-serif",
+				"label": "Heading font"
 			},
 			{
 				"type": "header",
