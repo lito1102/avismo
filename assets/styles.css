@@ -84,9 +84,9 @@ button {
 .position {
 	position: relative;
 }
-.fixed-nav .header {
+.header {
 	position: fixed;
-	z-index: 100;
+	z-index: 400;
 }
 
 .showcase-heading {
@@ -4788,10 +4788,10 @@ h3,
 h4,
 h5,
 h6 {
-	margin-top: 0;
+	/* margin-top: 0;
 	margin-bottom: 0.5rem;
 	font-weight: 500;
-	line-height: 1.2;
+	line-height: 1.2; */
 }
 .h1,
 h1 {
@@ -4868,7 +4868,7 @@ address {
 }
 ol,
 ul {
-	padding-left: 2rem;
+	/* padding-left: 2rem; */
 }
 dl,
 ol,

@@ -10,7 +10,7 @@
               {% form 'customer', class: 'newsletter__form text-center' %}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 {% if section.settings.newsletter_heading != blank %}
-                  <label class="newsletter__signup--title">{{ section.settings.newsletter_heading | escape }}</label>
+                  <h1 class="newsletter__signup--title">{{ section.settings.newsletter_heading | escape }}</h1>
                 {% endif %}
 
                 {% if section.settings.newsletter_text != blank %}

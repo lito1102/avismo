@@ -176,7 +176,7 @@
 	height: 100%;
 }
 .megamenu__collection-heading > a {
-	font-family: var(--body-font);
+	font-family: var(--font-body-family);
 	font-size: 1.3rem;
 	font-weight: 300;
 	letter-spacing: 0.2em;
