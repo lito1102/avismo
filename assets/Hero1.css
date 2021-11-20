@@ -43,7 +43,7 @@
 }
 .hero1__paragraph {
 	font-size: 1.7rem;
-	font-weight: 300;
+	/* font-weight: 300; */
 	color: var(--white);
 	margin-bottom: 1em;
 }

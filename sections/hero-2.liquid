@@ -22,8 +22,8 @@
   {%- endif -%}
 
     {% assign opacity_1 = section.settings.opacity_1 | divided_by: 100.00 %}
-    <div class="hero2__content-container" style="background-color: {{ section.settings.background_img_1 | color_modify: 'alpha', opacity_1 }};">
-      <div class="hero2__info">
+    <div class="hero2__content-overlay" style="background-color: {{ section.settings.background_img_1 | color_modify: 'alpha', opacity_1 }};">
+      <div class="hero2__info hero2__info--right-{{ section.settings.content_alignment }} hero2__info--text-{{ section.settings.text_alignment }}">
         <h1 class="hero2__title">
           {{ section.settings.heading_title_1 }}
         </h1>
@@ -59,8 +59,8 @@
   {%- endif -%}
 
     {% assign opacity_2 = section.settings.opacity_2 | divided_by: 100.00 %}
-    <div class="hero2__content-container" style="background-color: {{ section.settings.background_img_2 | color_modify: 'alpha', opacity_2 }};">
-      <div class="hero2__info2">
+    <div class="hero2__content-overlay" style="background-color: {{ section.settings.background_img_2 | color_modify: 'alpha', opacity_2 }};">
+      <div class="hero2__info2 hero2__info2--left-{{ section.settings.content2_alignment }} hero2__info2--text-{{ section.settings.text2_alignment }}">
         <h1 class="hero2__title">
           {{ section.settings.heading_title_2 }}
         </h1>
@@ -118,6 +118,38 @@
       "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
     },
     {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "bottom",
+      "label": "Hero content alignment"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right",
+      "label": "Hero text alignment"
+    },
+    {
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-with-text.settings.image.label"
@@ -153,6 +185,38 @@
       "type": "url",
       "id": "button_link_2",
       "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "content2_alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "bottom",
+      "label": "Hero content alignment"
+    },
+    {
+      "type": "select",
+      "id": "text2_alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "left",
+      "label": "Hero text alignment"
     }
   ],
   "presets": [
