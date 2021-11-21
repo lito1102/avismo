@@ -86,13 +86,14 @@ button {
 }
 .header {
 	position: fixed;
-	z-index: 400;
+	z-index: 100;
 }
 
 .showcase-heading {
 	font-size: 4rem;
 	font-weight: 500;
 }
+/* 
 .site-nav--is-megamenu.header1__nav-left-list-item,
 .site-nav--is-megamenu.header2__nav-right-list-item,
 .site-nav--is-megamenu.header3__nav-left-list-item,
@@ -152,7 +153,7 @@ button {
 }
 .megamenu__list > li > a {
 	padding-left: 0;
-}
+} */
 /* .newsletter {
 	padding: 4em 0;
 }
@@ -4802,7 +4803,7 @@ h1 {
 @media (min-width: 1200px) {
 	.h1,
 	h1 {
-		font-size: 2.5rem;
+		/* font-size: 2.5rem; */
 	}
 }
 .h2,

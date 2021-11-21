@@ -139,8 +139,7 @@
 .site-nav--is-megamenu.header1__nav-left-list-item,
 .site-nav--is-megamenu.header2__nav-right-list-item,
 .site-nav--is-megamenu.header3__nav-left-list-item,
-.site-nav--is-megamenu.header4__nav-left-list-item,
-.site-nav--is-megamenu.header5__nav-right-list-item {
+.site-nav--is-megamenu.header4__nav-left-list-item {
 	position: static;
 }
 .megamenu {
