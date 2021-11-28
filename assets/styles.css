@@ -49,18 +49,6 @@ img {
 	display: block;
 	object-fit: cover;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--font-heading-family);
-	font-style: var(--font-heading-style);
-	font-weight: var(--font-heading-weight);
-	margin: 0;
-	padding: 0;
-}
 p,
 ul {
 	margin: 0;

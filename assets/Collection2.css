@@ -3,7 +3,7 @@
 }
 .collection2 .featured-product-title {
 	font-size: 2.6rem;
-	font-size: 700;
+	font-weight: var(--font-heading-weight);
 	color: var(--heading-color);
 	margin-bottom: 0.6em;
 }
@@ -23,12 +23,12 @@
 }
 .collection2__product-title {
 	font-size: 1.5rem;
-	font-weight: 400;
+	font-weight: var(--font-body-weight);
 	display: block;
 }
 .collection2__product-price {
 	font-size: 1.5rem;
-	font-weight: 400;
+	font-weight: var(--font-body-weight);
 	color: var(--body-color-2);
 }
 @media (min-width: 1024px) {
