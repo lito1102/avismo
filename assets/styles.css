@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+/* @import url(https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap); */
 :root {
 	/* --heading-font: 'Playfair Display', serif;
 	--body-font: 'Poppins', sans-serif; */
@@ -60,9 +60,6 @@ h6 {
 	font-weight: var(--font-heading-weight);
 	margin: 0;
 	padding: 0;
-}
-p {
-	font-family: var(--font-body-family);
 }
 p,
 ul {
@@ -4760,7 +4757,7 @@ body {
 	margin: 0;
 	font-family: var(--bs-font-sans-serif);
 	font-size: 1rem;
-	font-weight: 400;
+	/* font-weight: 400; */
 	line-height: 1.5;
 	color: #212529;
 	background-color: #fff;
@@ -4852,7 +4849,7 @@ h6 {
 }
 p {
 	margin-top: 0;
-	margin-bottom: 1rem;
+	/* margin-bottom: 1rem; */
 }
 abbr[data-bs-original-title],
 abbr[title] {

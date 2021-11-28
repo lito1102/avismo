@@ -37,7 +37,7 @@
 }
 .collection1__title {
 	font-size: 3.2rem;
-	font-weight: 500;
+	font-weight: var(--body-font-weight);
 	line-height: 1.4em;
 	color: var(--white);
 }
@@ -50,7 +50,7 @@
 	padding: 0.9em 0.8em;
 	display: inline-block;
 	font-size: 1.1rem;
-	font-weight: 500;
+	font-weight: var(--body-font-weight);
 	letter-spacing: 0.1em;
 	color: var(--heading-color);
 	background-color: var(--white);
