@@ -4781,9 +4781,9 @@ h6 {
 }
 .h1,
 h1 {
-	font-size: -webkit-calc(1.375rem + 1.5vw);
+	/* font-size: -webkit-calc(1.375rem + 1.5vw);
 	font-size: -moz-calc(1.375rem + 1.5vw);
-	font-size: calc(1.375rem + 1.5vw);
+	font-size: calc(1.375rem + 1.5vw); */
 }
 @media (min-width: 1200px) {
 	.h1,
@@ -4793,14 +4793,14 @@ h1 {
 }
 .h2,
 h2 {
-	font-size: -webkit-calc(1.325rem + 0.9vw);
+	/* font-size: -webkit-calc(1.325rem + 0.9vw);
 	font-size: -moz-calc(1.325rem + 0.9vw);
-	font-size: calc(1.325rem + 0.9vw);
+	font-size: calc(1.325rem + 0.9vw); */
 }
 @media (min-width: 1200px) {
 	.h2,
 	h2 {
-		font-size: 2rem;
+		/* font-size: 2rem; */
 	}
 }
 .h3,
