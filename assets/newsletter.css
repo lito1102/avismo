@@ -9,13 +9,14 @@ form {
 }
 .newsletter__signup--title {
 	font-size: 2.8rem;
+	color: var(--heading-color);
 	font-weight: 600;
-	/* font-family: var(--heading-font); */
 }
 .newsletter__signup--subtitle {
 	font-family: var(--body-font);
 	font-size: 1.6rem;
 	font-weight: 300;
+	color: var(--heading-color);
 }
 .input-wrapper {
 	margin-top: 1em;

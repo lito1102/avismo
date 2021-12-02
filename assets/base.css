@@ -735,7 +735,7 @@ summary::-webkit-details-marker {
 /* component-title */
 .title,
 .title-wrapper-with-link {
-	margin: 3rem 0 2rem;
+	margin: 3em 0 2em;
 }
 
 .title-wrapper-with-link .title {
@@ -743,15 +743,16 @@ summary::-webkit-details-marker {
 }
 
 .title-wrapper {
-	margin-bottom: 3rem;
+	margin-bottom: 3em;
 }
 
 .title-wrapper-with-link {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-end;
+	/* align-items: flex-end; */
+	align-items: center;
 	gap: 1rem;
-	margin: 4rem 0 3rem;
+	margin: 5em 0 3em;
 	flex-wrap: wrap;
 }
 
@@ -775,7 +776,7 @@ summary::-webkit-details-marker {
 @media screen and (min-width: 990px) {
 	.title,
 	.title-wrapper-with-link {
-		margin: 5rem 0 3rem;
+		margin: 6em 0 3em;
 	}
 
 	.title--primary {
