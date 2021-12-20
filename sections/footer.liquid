@@ -2,8 +2,8 @@
 
 <footer class="main-footer">
   <div class="container py-5">
-    <div class="row gy-3">
-      <div class="col-sm-3 col-md-3 mx-auto d-flex justify-content-start">
+    <div class="row mx-auto justify-content-center">
+      <div class="col-7 col-sm-2">
         {%- if section.settings.footer_logo != blank -%}
         {%- assign image_size = section.settings.footer_logo_width | append: 'x' -%}
         <img
@@ -18,8 +18,8 @@
         {%- endif -%}
       </div>
       {%- for block in section.blocks -%}  
-          <div class="col-sm-3 col-md-3">
-            <h5 class="footer-heading-title pb-5">{{ block.settings.heading | escape }}</h5>
+          <div class="col-6 col-md-3">
+            <h5 class="footer-heading-title pb-3">{{ block.settings.heading | escape }}</h5>
               <ul>
                 {%- for link in block.settings.menu.links -%}
                   <li>
@@ -31,7 +31,7 @@
       {%- endfor -%}
     </div>
   </div>
-  <div class="main-footer__social py-3">
+  <div class="main-footer__social">
     <div class="container">
       <div class="row d-flex align-items-center">
         <div class="col-md-3">
@@ -164,7 +164,7 @@
       "type": "range",
       "id": "footer_logo_width",
       "min": 50,
-      "max": 250,
+      "max": 350,
       "step": 10,
       "default": 100,
       "unit": "t:sections.header.settings.logo_width.unit",

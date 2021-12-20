@@ -1,5 +1,6 @@
 .main-footer {
-	padding: 3em 0;
+	padding: 3em 0 0 0;
+	overflow: hidden;
 	background-color: var(--footer);
 }
 .main-footer ul > li:not(:last-child) {
