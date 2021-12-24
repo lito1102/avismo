@@ -1,37 +1,41 @@
 {
 	"sections": {
-		"image_banner": {
-			"type": "image-banner",
-			"settings": {
-				"desktop_text_box_position": "flex-end"
-			},
+		"hero_one": {
+			"type": "hero-1",
 			"blocks": {
 				"heading": {
 					"type": "heading",
 					"settings": {
-						"heading": "Talk about your brand"
+						"heading": "Summer Styles"
+					}
+				},
+				"text": {
+					"type": "text",
+					"settings": {
+						"hero_one_text": "Shop the latest end of the summer sale going on now."
 					}
 				},
 				"button": {
-					"type": "buttons",
+					"type": "button",
 					"settings": {
-						"button_label_1": "Shop all",
-						"button_link_1": "shopify://collections/all",
-						"button_label_2": ""
+						"button_label": "SHOP SWIMWEAR"
 					}
 				}
 			},
-			"block_order": ["heading", "button"]
+			"block_order": ["heading", "text", "button"]
 		},
-		"featured_products": {
-			"type": "featured-collection",
+		"collection_group_one": {
+			"type": "collection-group-one",
 			"settings": {
-				"title": "Featured products"
+				"text": "Shop Collection"
 			}
 		},
-		"image_text": {
-			"type": "image-with-text",
+		"featured_image_with_text": {
+			"type": "featured-image-with-text",
 			"blocks": {
+				"top_heading": {
+					"type": "top_heading"
+				},
 				"heading": {
 					"type": "heading"
 				},
@@ -42,8 +46,8 @@
 					"type": "button"
 				}
 			},
-			"block_order": ["heading", "text", "button"]
+			"block_order": ["top_heading", "heading", "text", "button"]
 		}
 	},
-	"order": ["image_banner", "featured_products", "image_text"]
+	"order": ["hero_one", "collection_group_one", "featured_image_with_text"]
 }
