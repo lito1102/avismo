@@ -1,53 +1,104 @@
 {
-	"sections": {
-		"hero_one": {
-			"type": "hero-1",
-			"blocks": {
-				"heading": {
-					"type": "heading",
-					"settings": {
-						"heading": "Summer Styles"
-					}
-				},
-				"text": {
-					"type": "text",
-					"settings": {
-						"hero_one_text": "Shop the latest end of the summer sale going on now."
-					}
-				},
-				"button": {
-					"type": "button",
-					"settings": {
-						"button_label": "SHOP SWIMWEAR"
-					}
-				}
-			},
-			"block_order": ["heading", "text", "button"]
-		},
-		"collection_group_one": {
-			"type": "collection-group-one",
-			"settings": {
-				"text": "Shop Collection"
-			}
-		},
-		"featured_image_with_text": {
-			"type": "featured-image-with-text",
-			"blocks": {
-				"top_heading": {
-					"type": "top_heading"
-				},
-				"heading": {
-					"type": "heading"
-				},
-				"text": {
-					"type": "text"
-				},
-				"button": {
-					"type": "button"
-				}
-			},
-			"block_order": ["top_heading", "heading", "text", "button"]
-		}
-	},
-	"order": ["hero_one", "collection_group_one", "featured_image_with_text"]
+  "sections": {
+    "hero_one": {
+      "type": "hero-1",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "hero_one_title": "Summer Styles"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "hero_one_text": "Shop the latest end of the summer sale going on now."
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP SWIMWEAR",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/avismo-hero.jpg",
+        "background": "#b96f4a",
+        "opacity": 10,
+        "content_alignment": "left"
+      }
+    },
+    "collection_group_one": {
+      "type": "collection-group-one",
+      "settings": {
+        "collection_section_title": "Shop Collection",
+        "collection_bg_1": "#cccccc",
+        "opacity_collection_1": 5,
+        "collection1_title": "Guys Swimwear",
+        "collection1_description": "Mens trending fashion swimwear.",
+        "button_label_1": "SHOP COLLECTION",
+        "button_link_1": "",
+        "collection_bg_2": "#cccccc",
+        "opacity_collection_2": 5,
+        "collection2_title": "Girls Swimwear",
+        "collection2_description": "Wear the summer impressions.",
+        "button_label_2": "SHOP COLLECTION",
+        "button_link_2": ""
+      }
+    },
+    "featured_image_with_text": {
+      "type": "featured-image-with-text",
+      "blocks": {
+        "top_heading": {
+          "type": "top_heading",
+          "settings": {
+            "top_heading": "NEW SWIMWEAR COLLECTION",
+            "top_heading_color": "#b96f4a"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "main_heading": "Our New Collection",
+            "main_heading_color": "#121212"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "featured_text": "Soaking in the sun or tanning your perfect shade, our swimwear collection fits every summer challenge with our beautiful designs wether its one peace ot a two peace bikini. Fit the summer comfortably."
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP SWIMWEAR",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "top_heading",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "bg_color": "#f9f4ee",
+        "content_order": "row"
+      }
+    }
+  },
+  "order": [
+    "hero_one",
+    "collection_group_one",
+    "featured_image_with_text"
+  ]
 }
