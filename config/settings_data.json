@@ -1,7 +1,12 @@
 {
   "current": {
     "type_header_font": "playfair_display_n4",
-    "type_body_font": "poppins_n4",
+    "type_body_font": "poppins_n3",
+    "social_twitter_link": "f",
+    "social_facebook_link": "f",
+    "social_instagram_link": "f",
+    "social_tiktok_link": "f",
+    "social_youtube_link": "f",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -41,18 +46,35 @@
           "footer-0": {
             "type": "link_list",
             "settings": {
-              "heading": "Quick links",
+              "heading": "Company",
               "menu": "footer"
+            }
+          },
+          "9d46cd65-54ff-4841-b703-cb8d1d49fce9": {
+            "type": "link_list",
+            "settings": {
+              "heading": "FAQ's",
+              "menu": "footer-menu-2"
+            }
+          },
+          "956ea2f2-f591-4ee8-b46c-6a3c4ac57c73": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Legal",
+              "menu": "footer-menu-3"
             }
           }
         },
         "block_order": [
-          "footer-0"
+          "footer-0",
+          "9d46cd65-54ff-4841-b703-cb8d1d49fce9",
+          "956ea2f2-f591-4ee8-b46c-6a3c4ac57c73"
         ],
         "settings": {
-          "show_social": false,
+          "show_social": true,
           "show_payment_icons": true,
-          "footer_logo_width": 100
+          "footer_logo": "shopify:\/\/shop_images\/footer.png",
+          "footer_logo_width": 170
         }
       }
     },
