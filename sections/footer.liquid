@@ -1,15 +1,16 @@
 {{ 'Footer.css' | asset_url | stylesheet_tag }}
 
 <footer class="main-footer">
-  <div class="container py-5">
+  <div class="container-fluid py-5">
     <div class="row mx-auto justify-content-center">
-      <div class="col-7 col-sm-2">
+      <div class="col-lg-2 col-md-2 col-sm-4 col">
         {%- if section.settings.footer_logo != blank -%}
         {%- assign image_size = section.settings.footer_logo_width | append: 'x' -%}
         <img
           srcset="{{ section.settings.footer_logo | img_url: image_size }} 1x, {{ section.settings.footer_logo | img_url: image_size, scale: 2 }} 2x"
           src="{{ section.settings.footer_logo | img_url: image_size }}" loading="lazy"
           width="{{ section.settings.footer_logo.width }}"
+          class="main-footer__image"
           alt="{{ section.settings.footer_logo.alt | default: shop.name | escape }}">
         {%- else -%}
         <h1 class="header1__nav-logo">
@@ -94,7 +95,7 @@
           </ul>
           {%- endif -%}
         </div>
-        <div class="col-md-6 col mx-auto">
+        <div class="col col-lg-4 col-sm-4 mx-auto">
           {% assign enabled_payment_types = 'visa,master,american_express,paypal,apple_pay,discover, shopify_pay' | remove: ' ' | split: ',' %}
           {%- if section.settings.show_payment_icons -%}
             <ul class="d-flex align-items-center mt-1 payment-list">
