@@ -22,7 +22,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "header_type": "header2",
+          "header_type": "header1",
           "logo_width": 100,
           "header_background_color": "#ffffff",
           "opacity": 100,
