@@ -69,14 +69,14 @@
 }
 .hero2__info--right-center {
 	position: absolute;
-	top: 60%;
+	top: 50%;
 	left: 46%;
 	transform: translate(-50%, -60%);
 	width: 100%;
 }
 .hero2__info--right-bottom {
 	position: absolute;
-	top: 85%;
+	top: 75%;
 	left: 46%;
 	transform: translate(-50%, -54%);
 	width: 100%;
@@ -89,14 +89,14 @@
 }
 .hero2__info2--left-bottom {
 	position: absolute;
-	top: 85%;
+	top: 75%;
 	left: 54%;
 	transform: translate(-50%, -54%);
 	width: 100%;
 }
 .hero2__info2--left-center {
 	position: absolute;
-	top: 60%;
+	top: 50%;
 	left: 54%;
 	transform: translate(-50%, -60%);
 	width: 100%;
