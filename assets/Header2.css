@@ -244,8 +244,11 @@
 	opacity: 1;
 	visibility: visible;
 }
+.nav-m1__main-nav-list-item:not(:last-child) {
+	border-bottom: solid 1px var(--heading-color);
+}
 .nav-m1__main-nav-list-item {
-	padding: 2em;
+	padding: 1em;
 }
 .heder-m1__main-nav-link {
 	font-size: 1.6rem;
