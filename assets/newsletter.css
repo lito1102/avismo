@@ -10,12 +10,9 @@ form {
 .newsletter__signup--title {
 	font-size: 2.8rem;
 	color: var(--heading-color);
-	font-weight: 600;
 }
 .newsletter__signup--subtitle {
-	font-family: var(--body-font);
 	font-size: 1.6rem;
-	font-weight: 300;
 	color: var(--heading-color);
 }
 .input-wrapper {
@@ -37,7 +34,6 @@ form {
 	width: 100%;
 	font-size: 1.6rem;
 	border: 1px solid var(--heading-color);
-	font-family: var(--body-font);
 }
 .newsletter__button {
 	margin: 0;

@@ -14,7 +14,7 @@
                 {% endif %}
 
                 {% if section.settings.newsletter_text != blank %}
-                  <label class="newsletter__signup--subtitle">{{ section.settings.newsletter_text | escape }}</label>
+                  <p class="newsletter__signup--subtitle">{{ section.settings.newsletter_text | escape }}</p>
                 {% endif %}
 
                 <div class="input-wrapper d-flex align-items-center mx-auto {% if form.errors %} input-group--error{% endif %}">
